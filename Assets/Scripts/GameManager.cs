@@ -38,16 +38,12 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        /*if (gameManager)
+        if (gameManager)
         {
             Destroy(gameObject);
         }
-        else
-        {
-            gameManager = this;
-            DontDestroyOnLoad(gameObject);
-        }*/
-        // BORRAR LO DE ABAJO DESPUES, SOLO PARA TEST
+        RequestGameManager();
+        /* BORRAR LO DE ABAJO DESPUES, SOLO PARA TEST
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -60,7 +56,7 @@ public class GameManager : MonoBehaviour
         parentMountains = GameObject.FindGameObjectWithTag("ParentMountains");
         parentExtras = GameObject.FindGameObjectWithTag("ParentExtras");
         InstantiateVegetables();
-        // BORRAR LO DE ARRIBA DESPUES, SOLO PARA TEST
+        // BORRAR LO DE ARRIBA DESPUES, SOLO PARA TEST*/
     }
 
     void Update()
@@ -116,9 +112,9 @@ public class GameManager : MonoBehaviour
             parentMountains = GameObject.FindGameObjectWithTag("ParentMountains");
             parentExtras = GameObject.FindGameObjectWithTag("ParentExtras");
             
-            actualDestruible = Instantiate(mountainsDestruibleBlocks[initialMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
+            /*actualDestruible = Instantiate(mountainsDestruibleBlocks[initialMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
             actualNotDestruible = Instantiate(mountainsNotDestruibleBlocks[initialMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
-            actualExtras = Instantiate(mountainsExtras[initialMountain], Vector2.zero, Quaternion.identity, parentExtras.transform);
+            actualExtras = Instantiate(mountainsExtras[initialMountain], Vector2.zero, Quaternion.identity, parentExtras.transform);*/
             InstantiateVegetables();
         }
     }
@@ -131,6 +127,11 @@ public class GameManager : MonoBehaviour
         ReactivateCamerasUp();
         hasEnterOnBS = true;
         stageFinished = false;
+
+        for(int i = 0; i < thingsPoints.Length; i++)
+        {
+            thingsPoints[i] = 0;
+        }
 
         actualMountain++;
         if (actualDestruible)
@@ -150,11 +151,12 @@ public class GameManager : MonoBehaviour
 
     private void GetAllCamerasUp()
     {
-        for(int i = 0; i < camerasUP.Length; i++)
+        GameObject[] cameras = GameObject.FindGameObjectsWithTag("CameraUp");
+        Debug.Log(cameras.Length + " " + camerasUP.Length);
+        for (int i = 0; i < camerasUP.Length; i++)
         {
-            GameObject camera = GameObject.FindGameObjectWithTag("CameraUp");
-            camera.tag = "Untagged";
-            camerasUP[i] = camera.GetComponent<CameraUpScript>();
+            cameras[i].tag = "Untagged";
+            camerasUP[i] = cameras[i].GetComponent<CameraUpScript>();
         }
     }
 
@@ -171,6 +173,7 @@ public class GameManager : MonoBehaviour
         if (!gameManager)
         {
             gameManager = FindObjectOfType<GameManager>();
+            DontDestroyOnLoad(gameManager);
         }
         return gameManager;
     }
@@ -201,5 +204,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(i);
         }
+    }
+
+    public void PlayerHasDead()
+    {
+        playerMovement.FreezingControl(true);
+        blackPanel.alpha = 1;
+        PointsGainedScript.instance.playerDead = true;
+        PointsGainedScript.instance.showingPoints = true;
     }
 }

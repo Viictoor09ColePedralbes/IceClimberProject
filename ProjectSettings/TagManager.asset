@@ -17,6 +17,8 @@ TagManager:
   - aerodactyl
   - blackPanel
   - vegetables_position
+  - vacio
+  - enemy
   layers:
   - Default
   - TransparentFX

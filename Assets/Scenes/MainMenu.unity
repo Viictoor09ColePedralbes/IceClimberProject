@@ -285,8 +285,142 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121835191ba1a0b48aa990dd17cbb75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialMountain: 0
+  initialMountain: 1
+  gainedPoints: 0
   areSecondPlayer: 0
+  gameStarted: 0
+  isOnBonusStage: 0
+  stageFinished: 0
+  actualScore: 0
+  mountainsCleared: 0
+  camerasUP:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  timeBonusStage_down: {fileID: 0}
+  timeBonusStage_up: {fileID: 0}
+  mountainsDestruibleBlocks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  mountainsNotDestruibleBlocks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  mountainsExtras:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  thingsPoints: 00000000000000000000000000000000
+  vegetablesPrefabs:
+  - {fileID: 7078478358150054045, guid: 9bfbd24ebf2336d449b8523b8cfb8bac, type: 3}
+  - {fileID: 7078478358150054045, guid: 36a34c8e7c030044186c6bf39cd0ea52, type: 3}
+  - {fileID: 7078478358150054045, guid: a2faf3ad15e7807468b1ede3a7d00698, type: 3}
+  - {fileID: 7078478358150054045, guid: e1961e8a76e3be54b8db6307e502e5e2, type: 3}
+  - {fileID: 7078478358150054045, guid: ac7fa04e5e109e74085d9b129797ff41, type: 3}
+  - {fileID: 7078478358150054045, guid: b414946d5e7d6ba4a880c73be5fcadb9, type: 3}
+  - {fileID: 7078478358150054045, guid: a68a9fce02f472a4d96b8eb19b2f9cce, type: 3}
+  - {fileID: 7078478358150054045, guid: 94dc1ac0f75fb1145b43955c1e9d72fa, type: 3}
+  - {fileID: 7078478358150054045, guid: 88c6032886617e74dafef4a32ccfa7d7, type: 3}
+  - {fileID: 7078478358150054045, guid: 0a4228ca981de0844bdddbcab60994aa, type: 3}
 --- !u!4 &181865428
 Transform:
   m_ObjectHideFlags: 0

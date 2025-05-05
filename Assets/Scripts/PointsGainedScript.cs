@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PointsGainedScript : MonoBehaviour
@@ -9,7 +10,7 @@ public class PointsGainedScript : MonoBehaviour
     [SerializeField] private CanvasGroup canvasShowPoints;
     [SerializeField] private TMP_Text[] actualPointsTexts, winLose_texts, vegetablesPoints_texts, obtainedVegetables_text, destroyedIce_text, defeatedBirds_text, destroyedBlocks_text; // 0 es P1, 1 es P2
     public Image[] actualVegetable_images;
-    [HideInInspector] public bool showingPoints;
+    [HideInInspector] public bool showingPoints, playerDead;
     private Color visible = new Vector4(1,1,1,1), invisible = new Vector4(1,1,1,0);
 
     [HideInInspector] public int pointsVegetables;
@@ -106,6 +107,10 @@ public class PointsGainedScript : MonoBehaviour
         popoDoingSmth.SetBool("isCrying", false);
         nanaDoingSmth.SetBool("isCelebrating", false);
         nanaDoingSmth.SetBool("isCrying", false);
+        if(playerDead)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private IEnumerator sumPuntosBonusStage()
