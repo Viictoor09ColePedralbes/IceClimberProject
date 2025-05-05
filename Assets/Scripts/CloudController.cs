@@ -4,50 +4,48 @@ using UnityEngine;
 
 public class CloudController : MonoBehaviour
 {
-    [SerializeField]
-    float speed;
+    public Tilemap tilemap; // Tilemap que contiene los tiles
+    public TileBase tile; // Tile que se va a mover
+    public Vector3Int startPosition; // Posición inicial del tile
+    private Vector3Int currentPosition;
+    public float speed = 1f; // Velocidad de movimiento
+    private GameObject player;
 
-    private Vector2 dir = Vector2.right;
-
-    public Collider2D wrapCollider; // Asigna el Collider que define los límites
-    public float buffer = 0.5f; // Espacio antes de duplicarse
-    private GameObject clone;
+    void Start()
+    {
+        currentPosition = startPosition;
+        tilemap.SetTile(currentPosition, tile);
+    }
 
     void Update()
     {
-        CheckWrap();
-        transform.Translate(dir * speed * Time.deltaTime);
-    }
+        Vector3Int newPosition = currentPosition + new Vector3Int(1, 0, 0); // Mover a la derecha
 
-    void CheckWrap()
-    {
-        if (!wrapCollider.bounds.Contains(transform.position))
+        tilemap.SetTile(currentPosition, null); // Borra el tile antiguo
+        tilemap.SetTile(newPosition, tile); // Lo coloca en la nueva posición
+
+        currentPosition = newPosition;
+
+        // Si el jugador está sobre la plataforma, lo mueve con ella
+        if (player != null)
         {
-            Vector3 newPosition = transform.position;
-
-            if (transform.position.x > wrapCollider.bounds.max.x + buffer)
-                CloneObject(new Vector3(wrapCollider.bounds.min.x, transform.position.y, transform.position.z));
-            if (transform.position.x < wrapCollider.bounds.min.x - buffer)
-                CloneObject(new Vector3(wrapCollider.bounds.max.x, transform.position.y, transform.position.z));
-
-            if (transform.position.y > wrapCollider.bounds.max.y + buffer)
-                CloneObject(new Vector3(transform.position.x, wrapCollider.bounds.min.y, transform.position.z));
-            if (transform.position.y < wrapCollider.bounds.min.y - buffer)
-                CloneObject(new Vector3(transform.position.x, wrapCollider.bounds.max.y, transform.position.z));
-
-            DestroyClone();
+            player.transform.position += Vector3.right * speed * Time.deltaTime;
         }
     }
 
-    void CloneObject(Vector3 clonePosition)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (clone == null)
-            clone = Instantiate(gameObject, clonePosition, Quaternion.identity);
+        if (other.CompareTag("Player"))
+        {
+            player = other.gameObject;
+        }
     }
 
-    void DestroyClone()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (clone != null && wrapCollider.bounds.Contains(transform.position))
-            Destroy(clone);
+        if (other.CompareTag("Player"))
+        {
+            player = null;
+        }
     }
 }
