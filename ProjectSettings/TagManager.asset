@@ -4,17 +4,24 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CameraUp
-  - bs_time_down
-  - Not_destruible_block
-  - ParentExtras
-  - ParentMountains
-  - yetiWall
+  - Floor
   - Hammer
-  - bs_time_up
   - Destruible_block
+  - Not_destruible_block
+  - ParentMountains
+  - ParentExtras
+  - bs_time_down
+  - bs_time_up
+  - CameraUp
+  - end_level
+  - aerodactyl
+  - blackPanel
+  - vegetables_position
+  - vacio
+  - enemy
   - BloqueHielo
-  - ScreenBounds
+  - yetiWall
+  - cloudWall
   layers:
   - Default
   - TransparentFX
@@ -22,10 +29,10 @@ TagManager:
   - 
   - Water
   - UI
-  - Yeti_Enemie
-  - CollisionMountain
-  - DestruibleBlock
-  - Cloud
+  - floor
+  - yeti
+  - wall collision
+  - cloud
   - 
   - 
   - 

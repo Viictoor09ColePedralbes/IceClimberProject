@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 public class YetiController : MonoBehaviour
 {
     [SerializeField]
+    private float yeti_Life = 1;
+
+    [SerializeField]
     float speed;
 
     [SerializeField]
@@ -46,12 +49,24 @@ public class YetiController : MonoBehaviour
 
         // Mover al personaje en la dirección actual si no está regresando
         transform.Translate(dir * speed * Time.deltaTime);
+
+        if (yeti_Life == 0)
+        {
+            CambiarDireccion();
+            Destroy(gameObject, 15);
+            
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {   
         if (collision.collider.CompareTag("yetiWall"))
         {
+            if (yeti_Life == 0)
+            {
+                Destroy(gameObject);
+            }
+
             CambiarDireccion() ;
             Debug.Log("Hay colision YetiWall");
             if (noHaySuelo)

@@ -283,7 +283,7 @@ TextureImporter:
         width: 7
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,6 +291,48 @@ TextureImporter:
       bones: []
       spriteID: 7b0befc1a9dd911438bf21c6e9727849
       internalID: -803182312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_bg_player1
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 43
+        width: 110
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b272d9e07c05f204a80878b240d41301
+      internalID: -658996258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_bg_player2
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 44
+        width: 110
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390b1e9c3df95f9499aba9bf51cb736e
+      internalID: -433180548
       vertices: []
       indices: 
       edges: []
@@ -313,6 +355,8 @@ TextureImporter:
       Highscore2: 987348356
       SelectModeIcon: -803182312
       TopHighscore: -2135222369
+      points_bg_player1: -658996258
+      points_bg_player2: -433180548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -11,7 +11,6 @@ public class CameraUpScript : MonoBehaviour
     private bool animationStarted = false;
     private float time = 0;
     private Vector3 newPos;
-    private GameManager gameManager;
 
     [SerializeField] private bool toBonusStage = false;
 
@@ -19,7 +18,6 @@ public class CameraUpScript : MonoBehaviour
     {
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         boxCollider = GetComponent<BoxCollider2D>();
-        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     void Update()
@@ -38,20 +36,16 @@ public class CameraUpScript : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        time = 0;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            time = 0;
             animationStarted = true;
             if (toBonusStage)
             {
                 newPos = new Vector3(playerCamera.transform.position.x, 27, playerCamera.transform.position.z);
-                gameManager.isOnBonusStage = true;
+                GameManager.instance.isOnBonusStage = true;
             }
             else
             {

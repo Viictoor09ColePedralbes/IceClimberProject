@@ -346,7 +346,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -367,7 +367,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -493,7 +493,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -501,6 +501,363 @@ TextureImporter:
       bones: []
       spriteID: fd31d343e1b16f94da70f4a18c7e36d5
       internalID: -1828937796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aerodactyl1
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 153
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73c1d22b8a6727c47aeb3fdd63cba418
+      internalID: 1231729942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aerodactyl2
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 153
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6c72bd60ea8c6441ba86dff79589798
+      internalID: -1752270418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aerodactyl3
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 153
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 853a4c0f3f78fdb4fb0d126c58d98879
+      internalID: -1642417931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popo_crying2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 120
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4afee2558e10c0947a33334f6c38c8b5
+      internalID: -194088599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popo_crying1
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 120
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6724aea72079b6444943719324ed2047
+      internalID: 1823147834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popo_happy1
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 0
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c85f4bd8f912594eb0b9227403eb985
+      internalID: -362780211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popo_happy2
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 120
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6e89fe443304424380c26922f7d7b52
+      internalID: 207187358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eggplant
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90f2a510ce6e2b469b90bd87dd67205
+      internalID: 592576278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Carrot
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb92b3858df0f8418bb824f33cce76c
+      internalID: -512976676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cabbage
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c279103ee1d054aa2f78af6c297912
+      internalID: -1415496643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zucchini
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dec1272b0bdbf74696e04957ab5db8e
+      internalID: -811320004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corn
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff797d50913ce09439e65f6541dd3e4e
+      internalID: -977475159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Turnip
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73dfd799b5df3741baae1f31e0a6420
+      internalID: 119679100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pumpkin
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3645ad21a0b1ad841a6b35d0c50c757f
+      internalID: -2087448012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Romaine_lettuce
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6bef5245632094abd5582ef511ac02
+      internalID: 2084223823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potato
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ca0742ee000cb440983ab18f2da3d6b
+      internalID: 2056941441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mushroom
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 91
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 943e942db0978b1488e56e8893434df7
+      internalID: -1132031761
       vertices: []
       indices: 
       edges: []
@@ -516,6 +873,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Cabbage: -1415496643
+      Carrot: -512976676
+      Corn: -977475159
+      Eggplant: 592576278
+      Mushroom: -1132031761
       Popo_attacking1: 2117544366
       Popo_attacking2: 65782961
       Popo_attacking3: 2080193716
@@ -531,8 +893,20 @@ TextureImporter:
       Popo_walking1: 851856094
       Popo_walking2: -1595427483
       Popo_walking3: 94307265
+      Potato: 2056941441
+      Pumpkin: -2087448012
+      Romaine_lettuce: 2084223823
+      Turnip: 119679100
+      Zucchini: -811320004
+      aerodactyl1: 1231729942
+      aerodactyl2: -1752270418
+      aerodactyl3: -1642417931
       game_over: 1618645478
       icon_popo: 2051653579
+      popo_crying1: 1823147834
+      popo_crying2: -194088599
+      popo_happy1: -362780211
+      popo_happy2: 207187358
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

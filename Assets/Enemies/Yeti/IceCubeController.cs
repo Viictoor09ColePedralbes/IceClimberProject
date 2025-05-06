@@ -14,7 +14,6 @@ public class IceCubeController : MonoBehaviour
     [SerializeField]
     public TileBase fillTile;
 
-    float reyLength = 1f;
 
     public LayerMask groundLayer; // Capa del suelo
 

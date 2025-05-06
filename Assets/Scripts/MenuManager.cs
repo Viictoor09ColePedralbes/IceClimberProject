@@ -15,11 +15,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private RectTransform selectPlayerIcon;
     [SerializeField] private RectTransform[] totalTransIcon;
     private InputAction inputPlayersSelection, inputIniMount, inputStartGame;
-    private GameManager gameManager;
 
     void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         inputMenuMap.Enable();
     }
     void Start()
@@ -82,12 +80,12 @@ public class MenuManager : MonoBehaviour
 
     private void StartGame()
     {
-        gameManager.initialMountain = selectedMountain;
+        GameManager.instance.initialMountain = selectedMountain;
         if(gameModeSelection == 1)
         {
-            gameManager.areSecondPlayer = true;
+            GameManager.instance.areSecondPlayer = true;
         }
-        gameManager.gameStarted = true;
+        GameManager.instance.gameStarted = true;
         SceneManager.LoadScene(1);
     }
 }

@@ -4,48 +4,51 @@ using UnityEngine;
 
 public class CloudController : MonoBehaviour
 {
-    public Tilemap tilemap; // Tilemap que contiene los tiles
-    public TileBase tile; // Tile que se va a mover
-    public Vector3Int startPosition; // Posición inicial del tile
-    private Vector3Int currentPosition;
-    public float speed = 1f; // Velocidad de movimiento
-    private GameObject player;
+    public GameObject cloudPrefab;
+    public GameObject spawnedCloud;
 
-    void Start()
+    [SerializeField]
+    float speed;
+
+    [SerializeField]
+    Vector2 dir;
+
+    [SerializeField]
+    Transform spawnCloud;
+
+    private void Start()
     {
-        currentPosition = startPosition;
-        tilemap.SetTile(currentPosition, tile);
+        Destroy(gameObject, 15);
     }
 
-    void Update()
+    private void Update()
     {
-        Vector3Int newPosition = currentPosition + new Vector3Int(1, 0, 0); // Mover a la derecha
+        transform.Translate(dir * speed * Time.deltaTime);
+    }
 
-        tilemap.SetTile(currentPosition, null); // Borra el tile antiguo
-        tilemap.SetTile(newPosition, tile); // Lo coloca en la nueva posición
-
-        currentPosition = newPosition;
-
-        // Si el jugador está sobre la plataforma, lo mueve con ella
-        if (player != null)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
         {
-            player.transform.position += Vector3.right * speed * Time.deltaTime;
+            collision.transform.SetParent(transform);
+            Debug.Log("Player sobre plataforma");
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("cloudWall"))
         {
-            player = other.gameObject;
+            spawnedCloud = Instantiate(cloudPrefab, spawnCloud.position, Quaternion.identity);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
-            player = null;
+            collision.transform.SetParent(null);
         }
     }
+
 }

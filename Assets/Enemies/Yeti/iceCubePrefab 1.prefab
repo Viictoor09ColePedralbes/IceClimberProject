@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3935481096623566797}
   - component: {fileID: 1080699649211410067}
   - component: {fileID: 6527488097377090154}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: iceCubePrefab 1
   m_TagString: BloqueHielo
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5193463089933323027}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Raycast_IceCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
