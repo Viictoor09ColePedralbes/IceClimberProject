@@ -95,9 +95,12 @@ public class PointsGainedScript : MonoBehaviour
                     StartCoroutine(sumPoints(destroyedBlocks_text, (i - 1), DESTROY_BLOCKS_POINTS));
                     break;
                 case 5:
-                    canvasShowPoints.alpha = 0;
-                    ChangeVisibilityOfAllTexts(false, 0);
-                    GameManager.instance.ChangeMountain();
+                    if(!playerDead)
+                    {
+                        canvasShowPoints.alpha = 0;
+                        ChangeVisibilityOfAllTexts(false, 0);
+                        GameManager.instance.ChangeMountain();
+                    }
                     showingPoints = false;
                     break;
             }
@@ -109,6 +112,7 @@ public class PointsGainedScript : MonoBehaviour
         nanaDoingSmth.SetBool("isCrying", false);
         if(playerDead)
         {
+            StartCoroutine(GameManager.instance.SaveLocalData());
             SceneManager.LoadScene(0);
         }
     }

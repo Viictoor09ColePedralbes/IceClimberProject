@@ -28,13 +28,19 @@ public class GameManager : MonoBehaviour
     private Transform playerTransform;
 
     [SerializeField] private GameObject[] mountainsDestruibleBlocks = new GameObject[32], mountainsNotDestruibleBlocks = new GameObject[32], mountainsExtras = new GameObject[32];
-    private List<GameObject> enemiesInScene;
+    private List<GameObject> enemiesInScene = new List<GameObject>();
     private GameObject parentMountains, parentExtras, actualDestruible, actualNotDestruible, actualExtras;
     private CanvasGroup blackPanel;
     [HideInInspector] public int[] thingsPoints = new int[4]; // 0 = vegetables, 1 = ice, 2 = birds, 3 = blocks
     public GameObject[] vegetablesPrefabs = new GameObject[10];
     private GameObject[] vegetablesInScene = new GameObject[4];
     private Transform[] vegetablesScenePosition = new Transform[4];
+
+    // Bird spawn times
+    [SerializeField] private GameObject[] enemiesPrefabs = new GameObject[3]; // 0 = yeti, 1 = oso, 2 = pajaro
+    private const float MIN_BIRD_SPAWN_TIME = 10f, MAX_BIRD_SPAWN_TIME = 15f, MAX_BIRD_X = 8.2f, BIRD_Y = 4.3f;
+    private bool birdAlive = false, birdSpawning = false;
+    
 
     void Awake()
     {
@@ -65,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             if(hasEnterOnBS)
             {
-                // Eliminar todos los enemigos activos de la escena
+                DestroyAllEnemies();
                 playerMovement.animator.SetBool("hasHammer", false);
                 timeBonusStage = 40.0f;
                 hasEnterOnBS = false;
@@ -87,6 +93,14 @@ public class GameManager : MonoBehaviour
                     isOnBonusStage = false;
                 }
             }
+        }
+        else
+        {
+            if (!birdAlive && !birdSpawning)
+            {
+                StartCoroutine(BirdSpawn());
+            }
+            
         }
     }
 
@@ -208,9 +222,55 @@ public class GameManager : MonoBehaviour
 
     public void PlayerHasDead()
     {
-        playerMovement.FreezingControl(true);
         blackPanel.alpha = 1;
         PointsGainedScript.instance.playerDead = true;
         PointsGainedScript.instance.showingPoints = true;
+    }
+
+    private void DestroyAllEnemies()
+    {
+        for(int i = 0; i < enemiesInScene.Count; i++)
+        {
+            Destroy(enemiesInScene[i].gameObject);
+            enemiesInScene.RemoveAt(i);
+        }
+    }
+
+    private IEnumerator BirdSpawn()
+    {
+        birdSpawning = true;
+        float timeToSpawn = Random.Range(MIN_BIRD_SPAWN_TIME, MAX_BIRD_SPAWN_TIME);
+        yield return new WaitForSecondsRealtime(timeToSpawn);
+
+        Vector2[] spawnPositions = new Vector2[2];
+        spawnPositions[0] = new Vector2(MAX_BIRD_X, BIRD_Y);
+        spawnPositions[1] = new Vector2(-MAX_BIRD_X, BIRD_Y);
+
+        int spawnSelected = Random.Range(0, spawnPositions.Length - 1);
+        GameObject newEnemy = Instantiate(enemiesPrefabs[2], spawnPositions[spawnSelected], Quaternion.identity);
+        enemiesInScene.Add(newEnemy);
+        birdAlive = true;
+        birdSpawning = false;
+    }
+
+    public void BirdKilled()
+    {
+        thingsPoints[2] += 1;
+        for (int i = 0; i < enemiesInScene.Count; i++)
+        {
+            if (enemiesInScene[i].GetComponent<BirdBehaviour>())
+            {
+                Destroy(enemiesInScene[i].gameObject);
+                enemiesInScene.RemoveAt(i);
+            }
+        }
+        birdAlive = false;
+    }
+
+    public IEnumerator SaveLocalData()
+    {
+        PlayerValues.SetScoreP1(actualScore);
+        SaveJSON.SaveData();
+        yield return new WaitForSecondsRealtime(3);
     }
 }

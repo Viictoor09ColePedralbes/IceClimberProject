@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class MenuManager : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class MenuManager : MonoBehaviour
         textHighScore1.text = highScore1.ToString("000000");
         textHighScore2.text = highScore2.ToString("000000");
         selectPlayerIcon.position = totalTransIcon[0].position;
+        LoadData();
     }
 
     void Update()
@@ -87,5 +89,31 @@ public class MenuManager : MonoBehaviour
         }
         GameManager.instance.gameStarted = true;
         SceneManager.LoadScene(1);
+    }
+
+    private void LoadData()
+    {
+        string ruta = Application.persistentDataPath + "/datosJugador.json";
+
+        if (File.Exists(ruta))
+        {
+            string json = File.ReadAllText(ruta);
+
+            PlayerValuesSerializable datosRestaurados = JsonUtility.FromJson<PlayerValuesSerializable>(json);
+
+            PlayerValues.topHighScore = datosRestaurados.topHighScore;
+            PlayerValues.highScore1 = datosRestaurados.highScore1;
+            PlayerValues.highScore2 = datosRestaurados.highScore2;
+
+            textTopHighScore.text = datosRestaurados.topHighScore.ToString("000000");
+            textHighScore1.text = datosRestaurados.highScore1.ToString("000000");
+            textHighScore2.text = datosRestaurados.highScore2.ToString("000000");
+
+            Debug.Log("Datos cargados desde: " + ruta);
+        }
+        else
+        {
+            Debug.Log("No se encontró el archivo de datos.");
+        }
     }
 }

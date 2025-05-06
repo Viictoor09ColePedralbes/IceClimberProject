@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction horizontal_ia, jump_ia, attack_ia;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D hammerCollider;
+    [SerializeField] private CapsuleCollider2D jumpCollider;
     [SerializeField] private Transform raycastOrigin;
     [SerializeField] private LayerMask layerMask;
     private float checkRadius = 0.05f;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject fallPoint;
     private float timeFallPoint, maxTimeFallPoint = 2f;
     [SerializeField] private Image[] lifesImages;
+    [SerializeField] private Image gameOverImage;
     void Awake()
     {
         playerState = PLAYER_STATES.IDLE;
@@ -79,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if(horizontalValue != 0)
         {
             spriteRenderer.flipX = horizontalValue >= 1 ? true : false;
+            hammerCollider.offset = horizontalValue >= 1 ? new Vector2(0.6f, -0.1451442f) : new Vector2(-0.6f, -0.1451442f);
         }
         
         if(playerState != PLAYER_STATES.JUMPING)
@@ -147,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isImpulsed)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpCollider.enabled = true;
             isImpulsed = true;
             animator.SetBool("isJumping", true);
         }
@@ -172,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
             isImpulsed = false;
+            jumpCollider.enabled = false;
             animator.SetBool("isJumping", false);
             playerState = PLAYER_STATES.IDLE;
             destroyedTile = false;
@@ -233,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
             gameObject.transform.position = fallPoint.transform.position;
             rb.velocity = Vector2.zero;
         }
-        else if (collision.CompareTag("enemy"))
+        else if (collision.CompareTag("enemy") && playerState != PLAYER_STATES.JUMPING && playerState != PLAYER_STATES.ATTACKING)
         {
             LoseLife();
         }
@@ -276,8 +281,10 @@ public class PlayerMovement : MonoBehaviour
             switch (lifes)
             {
                 case 0:
+                    FreezingControl(true);
                     lifesImages[2].color = invisibleColor;
-                    GameManager.instance.PlayerHasDead();
+                    gameOverImage.color = new Vector4(1,1,1,1);
+                    StartCoroutine(KillPlayer());
                     break;
                 case 1:
                     lifesImages[1].color = invisibleColor;
@@ -287,5 +294,23 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private IEnumerator KillPlayer()
+    {
+        RectTransform gameOverTransf = gameOverImage.GetComponent<RectTransform>();
+        Vector3 initialPos = gameOverTransf.position;
+        Vector3 finalPos = new Vector3(gameOverTransf.position.x, 887.5f, gameOverTransf.position.z);
+        float time = 0, maxTime = 1.5f;
+
+        while(time < maxTime)
+        {
+            gameOverTransf.position = Vector3.Lerp(initialPos, finalPos, time / maxTime);
+            time += Time.deltaTime;
+            yield return null; // Esperar siguiente frame
+        }
+
+        yield return new WaitForSecondsRealtime(2.5f);
+        GameManager.instance.PlayerHasDead();
     }
 }
