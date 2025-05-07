@@ -862,6 +862,7 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+<<<<<<< HEAD
     - serializedVersion: 2
       name: bird_flying1
       rect:
@@ -925,6 +926,8 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+>>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     outline: []
     physicsShape: []
     bones: []
@@ -964,10 +967,13 @@ TextureImporter:
       aerodactyl1: 1231729942
       aerodactyl2: -1752270418
       aerodactyl3: -1642417931
+<<<<<<< HEAD
       bird_dying: -598958064
       bird_flying1: -1123937609
       bird_flying2: -1681833076
       characters_and_items_spritesheet_0: 213180465
+=======
+>>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
       game_over: 1618645478
       icon_popo: 2051653579
       popo_crying1: 1823147834

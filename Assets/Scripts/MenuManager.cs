@@ -4,7 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+<<<<<<< HEAD
 using System.IO;
+=======
+>>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
 
 public class MenuManager : MonoBehaviour
 {
@@ -31,7 +34,10 @@ public class MenuManager : MonoBehaviour
         textHighScore1.text = highScore1.ToString("000000");
         textHighScore2.text = highScore2.ToString("000000");
         selectPlayerIcon.position = totalTransIcon[0].position;
+<<<<<<< HEAD
         LoadData();
+=======
+>>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     }
 
     void Update()
@@ -90,6 +96,7 @@ public class MenuManager : MonoBehaviour
         GameManager.instance.gameStarted = true;
         SceneManager.LoadScene(1);
     }
+<<<<<<< HEAD
 
     private void LoadData()
     {
@@ -116,4 +123,6 @@ public class MenuManager : MonoBehaviour
             Debug.Log("No se encontró el archivo de datos.");
         }
     }
+=======
+>>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
 }
