@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
         if (hit.collider == null)
             return false;
 
-        return hit.collider.CompareTag("Not_destruible_block") || hit.collider.CompareTag("Destruible_block");
+        return hit.collider.CompareTag("Not_destruible_block") || hit.collider.CompareTag("Destruible_block") || hit.collider.CompareTag("cloud");
     }
 
     public void FinishedAttack()
@@ -237,6 +237,7 @@ public class PlayerMovement : MonoBehaviour
         {
             LoseLife();
         }
+
     }
 
     public void FreezingControl(bool isFreezed)

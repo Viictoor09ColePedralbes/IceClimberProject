@@ -22,6 +22,7 @@ TagManager:
   - BloqueHielo
   - yetiWall
   - cloudWall
+  - cloud
   layers:
   - Default
   - TransparentFX

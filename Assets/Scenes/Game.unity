@@ -877,6 +877,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.56
       objectReference: {fileID: 0}
+    - target: {fileID: 2775917400542229848, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775917400542229848, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4665940281997428484, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.38
@@ -932,7 +940,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2650810969919887034, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1743652333}
   m_SourcePrefab: {fileID: 100100000, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
 --- !u!1 &143977039
 GameObject:
@@ -8986,7 +8997,7 @@ Transform:
   m_GameObject: {fileID: 911827213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 4.05, z: 0}
+  m_LocalPosition: {x: 0.08, y: 26.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11929,13 +11940,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3622754686346050774, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3857587408039035249, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.27
       objectReference: {fileID: 0}
     - target: {fileID: 3857587408039035249, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.11
+      value: 7.07
       objectReference: {fileID: 0}
     - target: {fileID: 3857587408039035249, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11969,6 +11984,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5033215186705180424, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033215186705180424, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
+      propertyPath: bloqueDeHieloPrefab
+      value: 
+      objectReference: {fileID: 5222468607347672647, guid: 5d131abe3d61cb045b257f0b9632371c, type: 3}
     - target: {fileID: 6498562028494000243, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
       propertyPath: m_Name
       value: Yeti_enemie (1)
@@ -11978,6 +12001,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
+--- !u!1 &1743652328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2650810969919887034, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
+  m_PrefabInstance: {fileID: 121330734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!251 &1743652333
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743652328}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1754457467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11989,6 +12036,10 @@ PrefabInstance:
     - target: {fileID: 2650810969919887034, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
       propertyPath: m_Name
       value: Cloud_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775917400542229848, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4665940281997428484, guid: 52695daae99bd6e4f9d2e554a4e12fea, type: 3}
       propertyPath: m_LocalPosition.x
