@@ -112,6 +112,8 @@ public class PointsGainedScript : MonoBehaviour
         nanaDoingSmth.SetBool("isCrying", false);
         if(playerDead)
         {
+            MongoDB_Script.instance.InsertData(); // Añadimos los datos de telemetria en la base de datos
+            GameManager.instance.gameStarted = false;
             StartCoroutine(GameManager.instance.SaveLocalData());
             SceneManager.LoadScene(0);
         }

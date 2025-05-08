@@ -4,3 +4,7 @@ Non-commercial Share Alike license (http://creativecommons.org/licenses/by-nc-sa
 [ancestry]
 
 Los puntos por superar el BS son los puntos de la verdura actual multiplicados por 10
+
+mongodb -> user: admin contra: admin
+
+conección a MongoDB: mongodb+srv://admin:admin@iceclimberdb.6t8buo1.mongodb.net/?retryWrites=true&w=majority&appName=IceClimberDB

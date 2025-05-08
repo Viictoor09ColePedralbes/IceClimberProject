@@ -292,90 +292,41 @@ MonoBehaviour:
   isOnBonusStage: 0
   stageFinished: 0
   actualScore: 0
-  mountainsCleared: 0
-  camerasUP:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   timeBonusStage_down: {fileID: 0}
   timeBonusStage_up: {fileID: 0}
-  mountainsDestruibleBlocks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  mountainsNotDestruibleBlocks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  mountains:
+  - {fileID: 6989350248056955925, guid: ed8fe0295a03273429934be29c1ff3ce, type: 3}
+  - {fileID: 6989350248056955925, guid: 6491f4092ba6cd64785efe7aa3c4aba1, type: 3}
+  - {fileID: 6989350248056955925, guid: ac5bbb9216691ed4b9431976745d9889, type: 3}
+  - {fileID: 6989350248056955925, guid: 8e2093fd82fba8f4fa7bf4bbfe382799, type: 3}
+  - {fileID: 6989350248056955925, guid: 82d9065a83d4b574db45f92fdf6f9154, type: 3}
+  - {fileID: 6989350248056955925, guid: d3176d2d678d1c24588bdcad1df47655, type: 3}
+  - {fileID: 6989350248056955925, guid: 988b1311e2c789d46abf7c796a879bc7, type: 3}
+  - {fileID: 6989350248056955925, guid: d9e2078fc98d8fb4bbfcf8c2ae027843, type: 3}
+  - {fileID: 6989350248056955925, guid: 7018dd5062a5b1c4aaae39b6e5cfb2cc, type: 3}
+  - {fileID: 6989350248056955925, guid: e4d3648f4f8d9e44b93b776ca20ce021, type: 3}
+  - {fileID: 6989350248056955925, guid: 7d4800d1ba2f0714c9eaf55562f4d460, type: 3}
+  - {fileID: 6989350248056955925, guid: 1421d934e49ab3342b5d6e9df219fbe6, type: 3}
+  - {fileID: 6989350248056955925, guid: f86ec5990d4cf2f43842f5cbff50c2c5, type: 3}
+  - {fileID: 6989350248056955925, guid: 69d6595320d6e174baed198824aba2a8, type: 3}
+  - {fileID: 6989350248056955925, guid: b47775dd05561884abf29900d01cc580, type: 3}
+  - {fileID: 6989350248056955925, guid: 5bbdfb371defe074595ef6ecdef1351b, type: 3}
+  - {fileID: 6989350248056955925, guid: bd07d0964eec9634c819c2dfc3526b77, type: 3}
+  - {fileID: 6989350248056955925, guid: 743ba3cbf13b7614bb7697ae4fb8c5d8, type: 3}
+  - {fileID: 6989350248056955925, guid: 88fb92210c0d7bd45bd641021d9100ac, type: 3}
+  - {fileID: 6989350248056955925, guid: 80819ce0d226c4a4fa77d338de510eb4, type: 3}
+  - {fileID: 6989350248056955925, guid: 37a728cf7e1bfed45a60a2ccbc3260f0, type: 3}
+  - {fileID: 6989350248056955925, guid: 99dfd60222e677e4787ce8e318034875, type: 3}
+  - {fileID: 6989350248056955925, guid: a5156e550cc789a45a1b30741ac98926, type: 3}
+  - {fileID: 6989350248056955925, guid: f06b0da2bfb1b494b98bb3702dd7a43c, type: 3}
+  - {fileID: 6989350248056955925, guid: 9fb93c1c647690847be02c2ceeacf856, type: 3}
+  - {fileID: 6989350248056955925, guid: 0cf4fee1c68ef01428a568f1e5100f1f, type: 3}
+  - {fileID: 6989350248056955925, guid: 43ae5875c8adeb641ab7c454e4f2561e, type: 3}
+  - {fileID: 6989350248056955925, guid: e9114c27a9851ae4d9f1f2b8ea0d28da, type: 3}
+  - {fileID: 6989350248056955925, guid: 7085c79b832571142b57adb10fb5cfeb, type: 3}
+  - {fileID: 6989350248056955925, guid: 43c37cf0f561a954b9b48dcfc064236d, type: 3}
+  - {fileID: 6989350248056955925, guid: f3e5d32ecff7dd24da56edc246bb3d10, type: 3}
+  - {fileID: 6989350248056955925, guid: 918309098cb2b234dae2a16539d9902a, type: 3}
   mountainsExtras:
   - {fileID: 0}
   - {fileID: 0}
@@ -421,6 +372,12 @@ MonoBehaviour:
   - {fileID: 7078478358150054045, guid: 94dc1ac0f75fb1145b43955c1e9d72fa, type: 3}
   - {fileID: 7078478358150054045, guid: 88c6032886617e74dafef4a32ccfa7d7, type: 3}
   - {fileID: 7078478358150054045, guid: 0a4228ca981de0844bdddbcab60994aa, type: 3}
+  enemiesPrefabs:
+  - {fileID: 6498562028494000243, guid: dabb0e5767d6ec7449711f2072c625c4, type: 3}
+  - {fileID: 6354885794940673235, guid: 59c51f609ab584d42842d58cd3b002a6, type: 3}
+  - {fileID: 6354885794940673235, guid: 59c51f609ab584d42842d58cd3b002a6, type: 3}
+  birdAlive: 0
+  pressedJump: 0
 --- !u!4 &181865428
 Transform:
   m_ObjectHideFlags: 0
@@ -1883,6 +1840,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239820195}
   m_CullTransparentMesh: 1
+--- !u!1 &1287459050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1287459052}
+  - component: {fileID: 1287459051}
+  m_Layer: 0
+  m_Name: MongoDB_Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &1287459051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287459050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df1056598f5fbf4f84e45b999d6f0f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1287459052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287459050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396751714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,3 +2319,4 @@ SceneRoots:
   - {fileID: 905986400}
   - {fileID: 181865428}
   - {fileID: 1648832705}
+  - {fileID: 1287459052}

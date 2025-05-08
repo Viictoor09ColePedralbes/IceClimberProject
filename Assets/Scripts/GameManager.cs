@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using MongoDB.Bson;
+using Unity.VisualScripting;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +21,7 @@ public class GameManager : MonoBehaviour
         }
     }
     private int actualMountain;
-    public int actualScore, mountainsCleared = 0;
+    public int actualScore;
     private int highScore, actualScene;
     private CameraUpScript[] camerasUP = new CameraUpScript[15];
     [SerializeField] private TMP_Text timeBonusStage_down, timeBonusStage_up;
@@ -27,7 +30,7 @@ public class GameManager : MonoBehaviour
     private Camera playerCamera;
     private Transform playerTransform;
 
-    [SerializeField] private GameObject[] mountainsDestruibleBlocks = new GameObject[32], mountainsNotDestruibleBlocks = new GameObject[32], mountainsExtras = new GameObject[32];
+    [SerializeField] private GameObject[] mountains = new GameObject[32], mountainsExtras = new GameObject[32];
     private List<GameObject> enemiesInScene = new List<GameObject>();
     private GameObject parentMountains, parentExtras, actualDestruible, actualNotDestruible, actualExtras;
     private CanvasGroup blackPanel;
@@ -36,11 +39,19 @@ public class GameManager : MonoBehaviour
     private GameObject[] vegetablesInScene = new GameObject[4];
     private Transform[] vegetablesScenePosition = new Transform[4];
 
-    // Bird spawn times
+    // Enemies variables
     [SerializeField] private GameObject[] enemiesPrefabs = new GameObject[3]; // 0 = yeti, 1 = oso, 2 = pajaro
     private const float MIN_BIRD_SPAWN_TIME = 10f, MAX_BIRD_SPAWN_TIME = 15f, MAX_BIRD_X = 8.2f, BIRD_Y = 4.3f;
-    private bool birdAlive = false, birdSpawning = false;
-    
+    [HideInInspector] public bool birdAlive = false;
+    private bool yetiSpawning = false;
+    private const float MIN_YETI_SPAWN_TIME = 10f, MAX_YETI_SPAWN_TIME = 15f;
+
+    // User telemetry variables
+    private float gameSessionTime = 0;
+    [HideInInspector] public int pressedJump = 0;
+    private int mountainsCleared = 0;
+    [HideInInspector] public int enemiesDefeated = 0;
+
 
     void Awake()
     {
@@ -87,6 +98,7 @@ public class GameManager : MonoBehaviour
                 else if (timeBonusStage < 0 || stageFinished)
                 {
                     playerMovement.animator.SetBool("hasHammer", true);
+                    mountainsCleared++;
                     playerMovement.FreezingControl(true);
                     blackPanel.alpha = 1;
                     PointsGainedScript.instance.showingPoints = true; // Para mostrar los puntos obtenidos y ver como se suman a los ya acumulados
@@ -94,13 +106,22 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else
+
+        if (gameStarted)
         {
-            if (!birdAlive && !birdSpawning)
+            UserTelemetry();
+            if (!isOnBonusStage)
             {
-                StartCoroutine(BirdSpawn());
+                if (!birdAlive)
+                {
+                    StartCoroutine(BirdSpawn());
+                }
+
+                if (!yetiSpawning)
+                {
+                    StartCoroutine(YetiSpawn());
+                }
             }
-            
         }
     }
 
@@ -113,8 +134,10 @@ public class GameManager : MonoBehaviour
     {
         actualScene = scene.buildIndex;
         actualMountain = initialMountain;
+        
         if(scene.buildIndex == 1)
         {
+            gameStarted = true;
             playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
             playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -125,10 +148,10 @@ public class GameManager : MonoBehaviour
 
             parentMountains = GameObject.FindGameObjectWithTag("ParentMountains");
             parentExtras = GameObject.FindGameObjectWithTag("ParentExtras");
-            
-            /*actualDestruible = Instantiate(mountainsDestruibleBlocks[initialMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
-            actualNotDestruible = Instantiate(mountainsNotDestruibleBlocks[initialMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
-            actualExtras = Instantiate(mountainsExtras[initialMountain], Vector2.zero, Quaternion.identity, parentExtras.transform);*/
+
+            actualDestruible = Instantiate(mountains[initialMountain-1], Vector2.zero, Quaternion.identity, parentMountains.transform);
+            // actualExtras = Instantiate(mountainsExtras[initialMountain], Vector2.zero, Quaternion.identity, parentExtras.transform);
+            playerMovement.destruibleTiles = GameObject.FindGameObjectWithTag("Destruible_block").GetComponent<Tilemap>();
             InstantiateVegetables();
         }
     }
@@ -155,9 +178,9 @@ public class GameManager : MonoBehaviour
         if(actualExtras)
             Destroy(actualExtras);
 
-        /*actualDestruible = Instantiate(mountainsDestruibleBlocks[actualMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
-        actualNotDestruible = Instantiate(mountainsNotDestruibleBlocks[actualMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
-        actualExtras = Instantiate(mountainsExtras[actualMountain], Vector2.zero, Quaternion.identity, parentExtras.transform);*/
+        actualDestruible = Instantiate(mountains[actualMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
+        // actualExtras = Instantiate(mountainsExtras[actualMountain], Vector2.zero, Quaternion.identity, parentExtras.transform);
+        playerMovement.destruibleTiles = GameObject.FindGameObjectWithTag("Destruible_block").GetComponent<Tilemap>();
         InstantiateVegetables();
         blackPanel.alpha = 0;
         playerMovement.FreezingControl(false);
@@ -222,7 +245,9 @@ public class GameManager : MonoBehaviour
 
     public void PlayerHasDead()
     {
+        gameStarted = false;
         blackPanel.alpha = 1;
+        DestroyAllEnemies();
         PointsGainedScript.instance.playerDead = true;
         PointsGainedScript.instance.showingPoints = true;
     }
@@ -238,7 +263,12 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator BirdSpawn()
     {
-        birdSpawning = true;
+        if (birdAlive)
+        {
+            yield break;
+        }
+        Debug.Log("Coroutine pajaro empezada");
+        birdAlive = true;
         float timeToSpawn = Random.Range(MIN_BIRD_SPAWN_TIME, MAX_BIRD_SPAWN_TIME);
         yield return new WaitForSecondsRealtime(timeToSpawn);
 
@@ -249,22 +279,6 @@ public class GameManager : MonoBehaviour
         int spawnSelected = Random.Range(0, spawnPositions.Length - 1);
         GameObject newEnemy = Instantiate(enemiesPrefabs[2], spawnPositions[spawnSelected], Quaternion.identity);
         enemiesInScene.Add(newEnemy);
-        birdAlive = true;
-        birdSpawning = false;
-    }
-
-    public void BirdKilled()
-    {
-        thingsPoints[2] += 1;
-        for (int i = 0; i < enemiesInScene.Count; i++)
-        {
-            if (enemiesInScene[i].GetComponent<BirdBehaviour>())
-            {
-                Destroy(enemiesInScene[i].gameObject);
-                enemiesInScene.RemoveAt(i);
-            }
-        }
-        birdAlive = false;
     }
 
     public IEnumerator SaveLocalData()
@@ -272,5 +286,49 @@ public class GameManager : MonoBehaviour
         PlayerValues.SetScoreP1(actualScore);
         SaveJSON.SaveData();
         yield return new WaitForSecondsRealtime(3);
+    }
+
+    private IEnumerator YetiSpawn()
+    {
+        yetiSpawning = true;
+        float timeToSpawn = Random.Range(MIN_YETI_SPAWN_TIME, MAX_YETI_SPAWN_TIME);
+        yield return new WaitForSecondsRealtime(timeToSpawn);
+
+        Vector2[] spawnPositions = new Vector2[7];
+        spawnPositions[0] = new Vector2(-8.94f, 0.409f);
+        spawnPositions[1] = new Vector2(-8.94f, 3.708f);
+        spawnPositions[2] = new Vector2(-8.94f, 7.011f);
+        spawnPositions[3] = new Vector2(-8.94f, 10.306f);
+        spawnPositions[4] = new Vector2(-8.94f, 13.62f);
+        spawnPositions[5] = new Vector2(-8.94f, 16.911f);
+        spawnPositions[6] = new Vector2(-8.94f, 20.197f);
+
+        int spawnSelected = Random.Range(0, spawnPositions.Length - 1);
+        int rightOrLeft = Random.Range(0, 2); // 0 = left, 1 = right
+
+        Vector2 spawnModified = rightOrLeft == 0 ? spawnPositions[spawnSelected] : new Vector2(spawnPositions[spawnSelected].x * -1, spawnPositions[spawnSelected].y);
+
+        GameObject newEnemy = Instantiate(enemiesPrefabs[0], spawnModified, Quaternion.identity);
+        enemiesInScene.Add(newEnemy);
+        yetiSpawning = false;
+    }
+
+    private void UserTelemetry() // Función ir calculando datos del usuario
+    {
+        gameSessionTime += Time.deltaTime;
+    }
+
+    public BsonDocument CreateUserTelemetryBSON()
+    {
+        BsonDocument bsonDoc = new BsonDocument
+        {
+            { "InitialMountain", initialMountain },
+            { "MountainsCleared", mountainsCleared },
+            { "GameSessionTime", gameSessionTime },
+            { "PointsObtained", actualScore },
+            { "EnemiesDefeated", enemiesDefeated},
+            { "PressedJump", pressedJump },
+        };
+        return bsonDoc;
     }
 }

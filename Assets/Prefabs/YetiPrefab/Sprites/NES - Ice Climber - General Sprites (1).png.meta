@@ -1,0 +1,969 @@
+fileFormatVersion: 2
+guid: 7d6f2f77c7bf37d4c885fecff7db763a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 80
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_145
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 412
+        width: 53
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 573b41736cad8f745934984bd57820b0
+      internalID: 1147454619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_150
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 412
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992dcc27699e8cf49afdb7ed2221aa8a
+      internalID: 792767780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_151
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 348
+        width: 52
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f6844f2372a9bd4ba68a2c5cf8ed908
+      internalID: -405121011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_159
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 412
+        width: 65
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2d20b1a12ec1a4b95635210f8f39d0
+      internalID: -1223726053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_160
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 412
+        width: 60
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1084653e1647a134f88fc45b5e1f7488
+      internalID: -77854286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_161
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 412
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b398bc846c6e4354dbc6aa3fde91f9db
+      internalID: -939695723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_165
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 348
+        width: 60
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf6de319d1f1a5b4e9762dbe80051745
+      internalID: 816849628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_166
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 348
+        width: 60
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 049d3cc09ff450e49b760c1654fc8e59
+      internalID: 517028841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_167
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 348
+        width: 64
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c071d2c749acc479f3ebdbf4545db7
+      internalID: -1914570402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_180
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 412
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4f7e03e4e2a354cbd2cb7ab877afea
+      internalID: 2047214910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_202
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 344
+        width: 64
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5f78cdc971bdd4e981095c6b56f3cf
+      internalID: -487244256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_203
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 344
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0888f67e5f6940148ae21723e57c3e40
+      internalID: -1435643685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_204
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 344
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cbee801ad478364da17b0ce8f90a4c3
+      internalID: 1943623051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_205
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 344
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93bdc4fb0fc5401439e1d0bb7b61d458
+      internalID: -1988352211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_206
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 344
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0583769ac54337488b970ac34e77663
+      internalID: 1175739805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_207
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 344
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9739c1513495eb40a7f62e5db921ea3
+      internalID: 2094896085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_208
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 344
+        width: 56
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82bde1352ed04ce4987f10162bd74ad6
+      internalID: -1542868131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_147
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 412
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 864f6e0216bfef54989a8ade87cbb499
+      internalID: 274332436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_148
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 412
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afd2e57ec04c6de459603cac7d3e78d3
+      internalID: -1334094656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_149
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 412
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c44f8e7a1485a8f4db3e253b5dd195fc
+      internalID: -1821299935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Ice Climber - General Sprites (1)_164
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 412
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917c47c11e839cc409dd5e6ea7a6ea2d
+      internalID: -1756095474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      NES - Ice Climber - General Sprites (1)_0: -2011496272
+      NES - Ice Climber - General Sprites (1)_1: 1883312255
+      NES - Ice Climber - General Sprites (1)_10: 205081940
+      NES - Ice Climber - General Sprites (1)_100: 355687863
+      NES - Ice Climber - General Sprites (1)_101: 1753645706
+      NES - Ice Climber - General Sprites (1)_102: -469244043
+      NES - Ice Climber - General Sprites (1)_103: 1452130648
+      NES - Ice Climber - General Sprites (1)_104: -1436461598
+      NES - Ice Climber - General Sprites (1)_105: 2120670432
+      NES - Ice Climber - General Sprites (1)_106: 265916818
+      NES - Ice Climber - General Sprites (1)_107: 639223682
+      NES - Ice Climber - General Sprites (1)_108: 2019283245
+      NES - Ice Climber - General Sprites (1)_109: -532537623
+      NES - Ice Climber - General Sprites (1)_11: 976861163
+      NES - Ice Climber - General Sprites (1)_110: 703749389
+      NES - Ice Climber - General Sprites (1)_111: 1186708252
+      NES - Ice Climber - General Sprites (1)_112: -1217452566
+      NES - Ice Climber - General Sprites (1)_113: 108897090
+      NES - Ice Climber - General Sprites (1)_114: 512639814
+      NES - Ice Climber - General Sprites (1)_115: -1576283268
+      NES - Ice Climber - General Sprites (1)_116: 226239343
+      NES - Ice Climber - General Sprites (1)_117: 1546156461
+      NES - Ice Climber - General Sprites (1)_118: 739315061
+      NES - Ice Climber - General Sprites (1)_119: -1771972884
+      NES - Ice Climber - General Sprites (1)_12: 1479055025
+      NES - Ice Climber - General Sprites (1)_120: 260786519
+      NES - Ice Climber - General Sprites (1)_121: 1641369485
+      NES - Ice Climber - General Sprites (1)_122: 1811740599
+      NES - Ice Climber - General Sprites (1)_123: 1788639623
+      NES - Ice Climber - General Sprites (1)_124: -785763233
+      NES - Ice Climber - General Sprites (1)_125: -34326046
+      NES - Ice Climber - General Sprites (1)_126: -1916730966
+      NES - Ice Climber - General Sprites (1)_127: -5961482
+      NES - Ice Climber - General Sprites (1)_128: -1789202044
+      NES - Ice Climber - General Sprites (1)_129: -568764047
+      NES - Ice Climber - General Sprites (1)_13: -542354461
+      NES - Ice Climber - General Sprites (1)_130: 700702370
+      NES - Ice Climber - General Sprites (1)_131: -1035190307
+      NES - Ice Climber - General Sprites (1)_132: 950853910
+      NES - Ice Climber - General Sprites (1)_133: 776724725
+      NES - Ice Climber - General Sprites (1)_134: -1051152961
+      NES - Ice Climber - General Sprites (1)_135: 1359752650
+      NES - Ice Climber - General Sprites (1)_136: -577286540
+      NES - Ice Climber - General Sprites (1)_137: 1923249828
+      NES - Ice Climber - General Sprites (1)_138: 1078414768
+      NES - Ice Climber - General Sprites (1)_139: -2075803530
+      NES - Ice Climber - General Sprites (1)_14: 856697736
+      NES - Ice Climber - General Sprites (1)_140: -272170052
+      NES - Ice Climber - General Sprites (1)_141: -1005417616
+      NES - Ice Climber - General Sprites (1)_142: -772620932
+      NES - Ice Climber - General Sprites (1)_143: 1139006507
+      NES - Ice Climber - General Sprites (1)_144: 1478017343
+      NES - Ice Climber - General Sprites (1)_145: 1147454619
+      NES - Ice Climber - General Sprites (1)_146: -1568346998
+      NES - Ice Climber - General Sprites (1)_147: 274332436
+      NES - Ice Climber - General Sprites (1)_148: -1334094656
+      NES - Ice Climber - General Sprites (1)_149: -1821299935
+      NES - Ice Climber - General Sprites (1)_15: -285550230
+      NES - Ice Climber - General Sprites (1)_150: 792767780
+      NES - Ice Climber - General Sprites (1)_151: -405121011
+      NES - Ice Climber - General Sprites (1)_152: 661337527
+      NES - Ice Climber - General Sprites (1)_153: -869961370
+      NES - Ice Climber - General Sprites (1)_154: -537100794
+      NES - Ice Climber - General Sprites (1)_155: 1892941751
+      NES - Ice Climber - General Sprites (1)_156: 1792079361
+      NES - Ice Climber - General Sprites (1)_157: 734549015
+      NES - Ice Climber - General Sprites (1)_158: -66336453
+      NES - Ice Climber - General Sprites (1)_159: -1223726053
+      NES - Ice Climber - General Sprites (1)_16: 1121485633
+      NES - Ice Climber - General Sprites (1)_160: -77854286
+      NES - Ice Climber - General Sprites (1)_161: -939695723
+      NES - Ice Climber - General Sprites (1)_162: -2140154237
+      NES - Ice Climber - General Sprites (1)_163: -1879241459
+      NES - Ice Climber - General Sprites (1)_164: -1756095474
+      NES - Ice Climber - General Sprites (1)_165: 816849628
+      NES - Ice Climber - General Sprites (1)_166: 517028841
+      NES - Ice Climber - General Sprites (1)_167: -1914570402
+      NES - Ice Climber - General Sprites (1)_168: -1378667979
+      NES - Ice Climber - General Sprites (1)_169: -1213294570
+      NES - Ice Climber - General Sprites (1)_17: 1664306974
+      NES - Ice Climber - General Sprites (1)_170: -2065191907
+      NES - Ice Climber - General Sprites (1)_171: 966254236
+      NES - Ice Climber - General Sprites (1)_172: 883186897
+      NES - Ice Climber - General Sprites (1)_173: 260322663
+      NES - Ice Climber - General Sprites (1)_174: 298755951
+      NES - Ice Climber - General Sprites (1)_175: 1378165409
+      NES - Ice Climber - General Sprites (1)_176: -2024575118
+      NES - Ice Climber - General Sprites (1)_177: -127625586
+      NES - Ice Climber - General Sprites (1)_178: 229448684
+      NES - Ice Climber - General Sprites (1)_179: 2113978392
+      NES - Ice Climber - General Sprites (1)_18: -1835088330
+      NES - Ice Climber - General Sprites (1)_180: 2047214910
+      NES - Ice Climber - General Sprites (1)_181: -503341854
+      NES - Ice Climber - General Sprites (1)_182: -1847785624
+      NES - Ice Climber - General Sprites (1)_183: 1853076839
+      NES - Ice Climber - General Sprites (1)_184: 2125538874
+      NES - Ice Climber - General Sprites (1)_185: -873859875
+      NES - Ice Climber - General Sprites (1)_186: -2080218088
+      NES - Ice Climber - General Sprites (1)_187: 1797108948
+      NES - Ice Climber - General Sprites (1)_188: 405546703
+      NES - Ice Climber - General Sprites (1)_189: -264439438
+      NES - Ice Climber - General Sprites (1)_19: -661335544
+      NES - Ice Climber - General Sprites (1)_190: 1586380455
+      NES - Ice Climber - General Sprites (1)_191: -957150946
+      NES - Ice Climber - General Sprites (1)_192: 1672011674
+      NES - Ice Climber - General Sprites (1)_193: 777649713
+      NES - Ice Climber - General Sprites (1)_194: 1055689262
+      NES - Ice Climber - General Sprites (1)_195: -70477406
+      NES - Ice Climber - General Sprites (1)_196: 1666213695
+      NES - Ice Climber - General Sprites (1)_197: 1792393157
+      NES - Ice Climber - General Sprites (1)_198: 722753079
+      NES - Ice Climber - General Sprites (1)_199: -293466131
+      NES - Ice Climber - General Sprites (1)_2: 2108109978
+      NES - Ice Climber - General Sprites (1)_20: -173167147
+      NES - Ice Climber - General Sprites (1)_200: -78674020
+      NES - Ice Climber - General Sprites (1)_201: -193261142
+      NES - Ice Climber - General Sprites (1)_202: -487244256
+      NES - Ice Climber - General Sprites (1)_203: -1435643685
+      NES - Ice Climber - General Sprites (1)_204: 1943623051
+      NES - Ice Climber - General Sprites (1)_205: -1988352211
+      NES - Ice Climber - General Sprites (1)_206: 1175739805
+      NES - Ice Climber - General Sprites (1)_207: 2094896085
+      NES - Ice Climber - General Sprites (1)_208: -1542868131
+      NES - Ice Climber - General Sprites (1)_209: 596276870
+      NES - Ice Climber - General Sprites (1)_21: -1348118694
+      NES - Ice Climber - General Sprites (1)_210: -1294469114
+      NES - Ice Climber - General Sprites (1)_211: -978014577
+      NES - Ice Climber - General Sprites (1)_212: -1496528186
+      NES - Ice Climber - General Sprites (1)_213: -67826996
+      NES - Ice Climber - General Sprites (1)_214: 1331083176
+      NES - Ice Climber - General Sprites (1)_215: -1339720515
+      NES - Ice Climber - General Sprites (1)_216: -683097708
+      NES - Ice Climber - General Sprites (1)_217: -2124140764
+      NES - Ice Climber - General Sprites (1)_218: 671087074
+      NES - Ice Climber - General Sprites (1)_219: 681525443
+      NES - Ice Climber - General Sprites (1)_22: -1587453498
+      NES - Ice Climber - General Sprites (1)_220: -956547819
+      NES - Ice Climber - General Sprites (1)_221: -1928037919
+      NES - Ice Climber - General Sprites (1)_222: -702812073
+      NES - Ice Climber - General Sprites (1)_223: 609365355
+      NES - Ice Climber - General Sprites (1)_224: 618972669
+      NES - Ice Climber - General Sprites (1)_225: 1858529179
+      NES - Ice Climber - General Sprites (1)_226: -1044330014
+      NES - Ice Climber - General Sprites (1)_227: 1095115716
+      NES - Ice Climber - General Sprites (1)_228: -2106094418
+      NES - Ice Climber - General Sprites (1)_229: -1615811512
+      NES - Ice Climber - General Sprites (1)_23: -1243378041
+      NES - Ice Climber - General Sprites (1)_230: -1522891620
+      NES - Ice Climber - General Sprites (1)_231: 263099879
+      NES - Ice Climber - General Sprites (1)_232: 37413352
+      NES - Ice Climber - General Sprites (1)_233: 1134171662
+      NES - Ice Climber - General Sprites (1)_234: -1635331819
+      NES - Ice Climber - General Sprites (1)_235: -1134219624
+      NES - Ice Climber - General Sprites (1)_236: -1110648510
+      NES - Ice Climber - General Sprites (1)_237: -1267262712
+      NES - Ice Climber - General Sprites (1)_238: -1429691492
+      NES - Ice Climber - General Sprites (1)_239: -1993648956
+      NES - Ice Climber - General Sprites (1)_24: 1010501101
+      NES - Ice Climber - General Sprites (1)_240: -375234888
+      NES - Ice Climber - General Sprites (1)_241: 1577467941
+      NES - Ice Climber - General Sprites (1)_242: -563055340
+      NES - Ice Climber - General Sprites (1)_243: 1911670445
+      NES - Ice Climber - General Sprites (1)_244: 1047491619
+      NES - Ice Climber - General Sprites (1)_245: 1305373231
+      NES - Ice Climber - General Sprites (1)_246: 1786180325
+      NES - Ice Climber - General Sprites (1)_247: 608008242
+      NES - Ice Climber - General Sprites (1)_248: -1000006087
+      NES - Ice Climber - General Sprites (1)_249: 768836199
+      NES - Ice Climber - General Sprites (1)_25: -871834361
+      NES - Ice Climber - General Sprites (1)_250: 1946115872
+      NES - Ice Climber - General Sprites (1)_251: 49963749
+      NES - Ice Climber - General Sprites (1)_252: -1586189550
+      NES - Ice Climber - General Sprites (1)_253: 831392525
+      NES - Ice Climber - General Sprites (1)_254: 1281161606
+      NES - Ice Climber - General Sprites (1)_255: -270843187
+      NES - Ice Climber - General Sprites (1)_256: -1211912029
+      NES - Ice Climber - General Sprites (1)_257: -505399507
+      NES - Ice Climber - General Sprites (1)_258: -1311720418
+      NES - Ice Climber - General Sprites (1)_259: 1780054741
+      NES - Ice Climber - General Sprites (1)_26: 598198081
+      NES - Ice Climber - General Sprites (1)_260: -328011802
+      NES - Ice Climber - General Sprites (1)_261: -1696126
+      NES - Ice Climber - General Sprites (1)_262: -1917514164
+      NES - Ice Climber - General Sprites (1)_263: 1257405831
+      NES - Ice Climber - General Sprites (1)_264: 2032587431
+      NES - Ice Climber - General Sprites (1)_265: -1540228801
+      NES - Ice Climber - General Sprites (1)_266: 552520363
+      NES - Ice Climber - General Sprites (1)_267: 400137617
+      NES - Ice Climber - General Sprites (1)_268: 498765358
+      NES - Ice Climber - General Sprites (1)_269: -1718161715
+      NES - Ice Climber - General Sprites (1)_27: 1731230217
+      NES - Ice Climber - General Sprites (1)_270: -708226144
+      NES - Ice Climber - General Sprites (1)_271: -682449086
+      NES - Ice Climber - General Sprites (1)_272: -1245982592
+      NES - Ice Climber - General Sprites (1)_273: 1640703108
+      NES - Ice Climber - General Sprites (1)_274: -1013061561
+      NES - Ice Climber - General Sprites (1)_275: -347564783
+      NES - Ice Climber - General Sprites (1)_276: 2141137424
+      NES - Ice Climber - General Sprites (1)_277: -510499130
+      NES - Ice Climber - General Sprites (1)_278: -683607406
+      NES - Ice Climber - General Sprites (1)_279: -1515810820
+      NES - Ice Climber - General Sprites (1)_28: -1908015121
+      NES - Ice Climber - General Sprites (1)_280: -1015780062
+      NES - Ice Climber - General Sprites (1)_281: -1641796740
+      NES - Ice Climber - General Sprites (1)_282: 1207580989
+      NES - Ice Climber - General Sprites (1)_283: 1650931233
+      NES - Ice Climber - General Sprites (1)_284: 988390335
+      NES - Ice Climber - General Sprites (1)_285: -898077521
+      NES - Ice Climber - General Sprites (1)_286: 1456533021
+      NES - Ice Climber - General Sprites (1)_287: 1265407353
+      NES - Ice Climber - General Sprites (1)_288: -1520652417
+      NES - Ice Climber - General Sprites (1)_289: -201955050
+      NES - Ice Climber - General Sprites (1)_29: -187929174
+      NES - Ice Climber - General Sprites (1)_290: 1819999210
+      NES - Ice Climber - General Sprites (1)_291: -814149242
+      NES - Ice Climber - General Sprites (1)_292: -1401594876
+      NES - Ice Climber - General Sprites (1)_293: 494541647
+      NES - Ice Climber - General Sprites (1)_294: -802624336
+      NES - Ice Climber - General Sprites (1)_295: 569977503
+      NES - Ice Climber - General Sprites (1)_296: -1716196986
+      NES - Ice Climber - General Sprites (1)_297: -1411072211
+      NES - Ice Climber - General Sprites (1)_298: -1888729376
+      NES - Ice Climber - General Sprites (1)_299: -1895657356
+      NES - Ice Climber - General Sprites (1)_3: -68244782
+      NES - Ice Climber - General Sprites (1)_30: -1304694350
+      NES - Ice Climber - General Sprites (1)_300: 70709713
+      NES - Ice Climber - General Sprites (1)_301: 2079448246
+      NES - Ice Climber - General Sprites (1)_302: 962850525
+      NES - Ice Climber - General Sprites (1)_303: 1015387565
+      NES - Ice Climber - General Sprites (1)_304: -275616803
+      NES - Ice Climber - General Sprites (1)_305: 942169297
+      NES - Ice Climber - General Sprites (1)_306: 942028240
+      NES - Ice Climber - General Sprites (1)_307: 618252072
+      NES - Ice Climber - General Sprites (1)_308: 1882477830
+      NES - Ice Climber - General Sprites (1)_309: -1418336164
+      NES - Ice Climber - General Sprites (1)_31: 1390745928
+      NES - Ice Climber - General Sprites (1)_310: -1088464130
+      NES - Ice Climber - General Sprites (1)_311: 1271284796
+      NES - Ice Climber - General Sprites (1)_312: 503663100
+      NES - Ice Climber - General Sprites (1)_313: 336148696
+      NES - Ice Climber - General Sprites (1)_314: -554744890
+      NES - Ice Climber - General Sprites (1)_315: 1623921960
+      NES - Ice Climber - General Sprites (1)_316: -1839863348
+      NES - Ice Climber - General Sprites (1)_317: 739824769
+      NES - Ice Climber - General Sprites (1)_318: -1351076629
+      NES - Ice Climber - General Sprites (1)_319: 1724756784
+      NES - Ice Climber - General Sprites (1)_32: 1240200385
+      NES - Ice Climber - General Sprites (1)_320: -2063053454
+      NES - Ice Climber - General Sprites (1)_321: -1263209987
+      NES - Ice Climber - General Sprites (1)_322: -1372772563
+      NES - Ice Climber - General Sprites (1)_323: -1600087328
+      NES - Ice Climber - General Sprites (1)_324: -2037946410
+      NES - Ice Climber - General Sprites (1)_325: -293513128
+      NES - Ice Climber - General Sprites (1)_326: -1185950355
+      NES - Ice Climber - General Sprites (1)_327: 1031165193
+      NES - Ice Climber - General Sprites (1)_328: -330588908
+      NES - Ice Climber - General Sprites (1)_329: 1573358514
+      NES - Ice Climber - General Sprites (1)_33: -1274313847
+      NES - Ice Climber - General Sprites (1)_330: -761284674
+      NES - Ice Climber - General Sprites (1)_331: -1567522851
+      NES - Ice Climber - General Sprites (1)_332: 420787527
+      NES - Ice Climber - General Sprites (1)_333: -730707917
+      NES - Ice Climber - General Sprites (1)_334: 1992440425
+      NES - Ice Climber - General Sprites (1)_335: 1549580563
+      NES - Ice Climber - General Sprites (1)_336: 1771587897
+      NES - Ice Climber - General Sprites (1)_337: -367284879
+      NES - Ice Climber - General Sprites (1)_338: -955444730
+      NES - Ice Climber - General Sprites (1)_339: 266640136
+      NES - Ice Climber - General Sprites (1)_34: 994118871
+      NES - Ice Climber - General Sprites (1)_340: 1431008371
+      NES - Ice Climber - General Sprites (1)_341: -2102983372
+      NES - Ice Climber - General Sprites (1)_342: -1216712696
+      NES - Ice Climber - General Sprites (1)_343: 119839574
+      NES - Ice Climber - General Sprites (1)_344: 1086909814
+      NES - Ice Climber - General Sprites (1)_345: 66308472
+      NES - Ice Climber - General Sprites (1)_346: 330091489
+      NES - Ice Climber - General Sprites (1)_347: -1047330588
+      NES - Ice Climber - General Sprites (1)_348: 2104983178
+      NES - Ice Climber - General Sprites (1)_349: 758461455
+      NES - Ice Climber - General Sprites (1)_35: -1706462696
+      NES - Ice Climber - General Sprites (1)_350: -1648629586
+      NES - Ice Climber - General Sprites (1)_351: -76291454
+      NES - Ice Climber - General Sprites (1)_352: 1179305385
+      NES - Ice Climber - General Sprites (1)_353: -280691240
+      NES - Ice Climber - General Sprites (1)_354: 1846907815
+      NES - Ice Climber - General Sprites (1)_355: -1100554519
+      NES - Ice Climber - General Sprites (1)_356: -1965403517
+      NES - Ice Climber - General Sprites (1)_357: 176966005
+      NES - Ice Climber - General Sprites (1)_358: 1670784738
+      NES - Ice Climber - General Sprites (1)_359: 1677585870
+      NES - Ice Climber - General Sprites (1)_36: 290260604
+      NES - Ice Climber - General Sprites (1)_360: 1510167447
+      NES - Ice Climber - General Sprites (1)_361: 1525802451
+      NES - Ice Climber - General Sprites (1)_37: 546158304
+      NES - Ice Climber - General Sprites (1)_38: 1763754146
+      NES - Ice Climber - General Sprites (1)_39: -1936205074
+      NES - Ice Climber - General Sprites (1)_4: 2041913112
+      NES - Ice Climber - General Sprites (1)_40: 779409654
+      NES - Ice Climber - General Sprites (1)_41: -525676199
+      NES - Ice Climber - General Sprites (1)_42: 147063671
+      NES - Ice Climber - General Sprites (1)_43: -1076896076
+      NES - Ice Climber - General Sprites (1)_44: 899677819
+      NES - Ice Climber - General Sprites (1)_45: 969309131
+      NES - Ice Climber - General Sprites (1)_46: 197911808
+      NES - Ice Climber - General Sprites (1)_47: -665085853
+      NES - Ice Climber - General Sprites (1)_48: -2129242900
+      NES - Ice Climber - General Sprites (1)_49: -1419578184
+      NES - Ice Climber - General Sprites (1)_5: -1595690171
+      NES - Ice Climber - General Sprites (1)_50: -1101039483
+      NES - Ice Climber - General Sprites (1)_51: 517850884
+      NES - Ice Climber - General Sprites (1)_52: -13587103
+      NES - Ice Climber - General Sprites (1)_53: -1871117245
+      NES - Ice Climber - General Sprites (1)_54: -843189367
+      NES - Ice Climber - General Sprites (1)_55: 788125217
+      NES - Ice Climber - General Sprites (1)_56: 1833687445
+      NES - Ice Climber - General Sprites (1)_57: -974204249
+      NES - Ice Climber - General Sprites (1)_58: 855370484
+      NES - Ice Climber - General Sprites (1)_59: 255922030
+      NES - Ice Climber - General Sprites (1)_6: -64784412
+      NES - Ice Climber - General Sprites (1)_60: -367100363
+      NES - Ice Climber - General Sprites (1)_61: -375421535
+      NES - Ice Climber - General Sprites (1)_62: -484656555
+      NES - Ice Climber - General Sprites (1)_63: 2085049215
+      NES - Ice Climber - General Sprites (1)_64: -308279212
+      NES - Ice Climber - General Sprites (1)_65: 1831725206
+      NES - Ice Climber - General Sprites (1)_66: 1212885753
+      NES - Ice Climber - General Sprites (1)_67: -210304979
+      NES - Ice Climber - General Sprites (1)_68: -322840370
+      NES - Ice Climber - General Sprites (1)_69: 1859849208
+      NES - Ice Climber - General Sprites (1)_7: 2065553531
+      NES - Ice Climber - General Sprites (1)_70: 1246204226
+      NES - Ice Climber - General Sprites (1)_71: -385488969
+      NES - Ice Climber - General Sprites (1)_72: -806537300
+      NES - Ice Climber - General Sprites (1)_73: 111076846
+      NES - Ice Climber - General Sprites (1)_74: 1542423796
+      NES - Ice Climber - General Sprites (1)_75: 2112821999
+      NES - Ice Climber - General Sprites (1)_76: -1599218921
+      NES - Ice Climber - General Sprites (1)_77: 409378465
+      NES - Ice Climber - General Sprites (1)_78: -459360450
+      NES - Ice Climber - General Sprites (1)_79: -895089125
+      NES - Ice Climber - General Sprites (1)_8: -874790362
+      NES - Ice Climber - General Sprites (1)_80: -1343574535
+      NES - Ice Climber - General Sprites (1)_81: -601059725
+      NES - Ice Climber - General Sprites (1)_82: 1445767659
+      NES - Ice Climber - General Sprites (1)_83: -1686335285
+      NES - Ice Climber - General Sprites (1)_84: 675225606
+      NES - Ice Climber - General Sprites (1)_85: 1511583927
+      NES - Ice Climber - General Sprites (1)_86: 1616282081
+      NES - Ice Climber - General Sprites (1)_87: -1942567367
+      NES - Ice Climber - General Sprites (1)_88: 1092591365
+      NES - Ice Climber - General Sprites (1)_89: 893441505
+      NES - Ice Climber - General Sprites (1)_9: -1056613123
+      NES - Ice Climber - General Sprites (1)_90: -1763431086
+      NES - Ice Climber - General Sprites (1)_91: -1265011170
+      NES - Ice Climber - General Sprites (1)_92: -1479503257
+      NES - Ice Climber - General Sprites (1)_93: 592171418
+      NES - Ice Climber - General Sprites (1)_94: -737894732
+      NES - Ice Climber - General Sprites (1)_95: 2060539197
+      NES - Ice Climber - General Sprites (1)_96: 380372988
+      NES - Ice Climber - General Sprites (1)_97: -843562935
+      NES - Ice Climber - General Sprites (1)_98: 620844501
+      NES - Ice Climber - General Sprites (1)_99: 1339921165
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

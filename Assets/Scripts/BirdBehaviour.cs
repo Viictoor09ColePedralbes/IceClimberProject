@@ -57,7 +57,10 @@ public class BirdBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Hammer"))
         {
-            GameManager.instance.BirdKilled();
+            GameManager.instance.thingsPoints[2] += 1;
+            GameManager.instance.birdAlive = false;
+            GameManager.instance.enemiesDefeated += 1;
+            Destroy(gameObject);
         }
     }
 }

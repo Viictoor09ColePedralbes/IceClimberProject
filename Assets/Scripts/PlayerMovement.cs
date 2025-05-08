@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private float checkRadius = 0.05f;
     private int lifes;
 
-    public Tilemap destruibleTiles; // Cambiar en cada escena
+    public Tilemap destruibleTiles;
 
     private bool isImpulsed = false, hasHammer = true, destroyedTile = false;
     private float horizontalValue;
@@ -150,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isImpulsed)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            GameManager.instance.pressedJump += 1;
             jumpCollider.enabled = true;
             isImpulsed = true;
             animator.SetBool("isJumping", true);
@@ -215,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3Int tilePos = destruibleTiles.WorldToCell(checkPos);
             Debug.Log("Tile pos: " + tilePos + " Has tile: " + destruibleTiles.HasTile(tilePos) + "Destroyed Tile: " + destroyedTile);
 
-            if (destruibleTiles.HasTile(tilePos) && !destroyedTile)
+            if (destruibleTiles.HasTile(tilePos) && !destroyedTile && hit.CompareTag("Destruible_block"))
             {
                 destroyedTile = true;
                 destruibleTiles.SetTile(tilePos, null);

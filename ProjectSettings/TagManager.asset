@@ -19,6 +19,8 @@ TagManager:
   - vegetables_position
   - vacio
   - enemy
+  - BloqueHielo
+  - yetiWall
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - Water
   - UI
   - floor
-  - 
+  - Yeti
   - 
   - 
   - 
