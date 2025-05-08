@@ -28,11 +28,7 @@ public class GameManager : MonoBehaviour
     private Transform playerTransform;
 
     [SerializeField] private GameObject[] mountainsDestruibleBlocks = new GameObject[32], mountainsNotDestruibleBlocks = new GameObject[32], mountainsExtras = new GameObject[32];
-<<<<<<< HEAD
     private List<GameObject> enemiesInScene = new List<GameObject>();
-=======
-    private List<GameObject> enemiesInScene;
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     private GameObject parentMountains, parentExtras, actualDestruible, actualNotDestruible, actualExtras;
     private CanvasGroup blackPanel;
     [HideInInspector] public int[] thingsPoints = new int[4]; // 0 = vegetables, 1 = ice, 2 = birds, 3 = blocks
@@ -40,15 +36,12 @@ public class GameManager : MonoBehaviour
     private GameObject[] vegetablesInScene = new GameObject[4];
     private Transform[] vegetablesScenePosition = new Transform[4];
 
-<<<<<<< HEAD
     // Bird spawn times
     [SerializeField] private GameObject[] enemiesPrefabs = new GameObject[3]; // 0 = yeti, 1 = oso, 2 = pajaro
     private const float MIN_BIRD_SPAWN_TIME = 10f, MAX_BIRD_SPAWN_TIME = 15f, MAX_BIRD_X = 8.2f, BIRD_Y = 4.3f;
     private bool birdAlive = false, birdSpawning = false;
     
 
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     void Awake()
     {
         if (gameManager)
@@ -78,11 +71,7 @@ public class GameManager : MonoBehaviour
         {
             if(hasEnterOnBS)
             {
-<<<<<<< HEAD
                 DestroyAllEnemies();
-=======
-                // Eliminar todos los enemigos activos de la escena
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
                 playerMovement.animator.SetBool("hasHammer", false);
                 timeBonusStage = 40.0f;
                 hasEnterOnBS = false;
@@ -105,7 +94,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-<<<<<<< HEAD
         else
         {
             if (!birdAlive && !birdSpawning)
@@ -114,8 +102,6 @@ public class GameManager : MonoBehaviour
             }
             
         }
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     }
 
     void OnEnable()
@@ -236,15 +222,10 @@ public class GameManager : MonoBehaviour
 
     public void PlayerHasDead()
     {
-<<<<<<< HEAD
-=======
-        playerMovement.FreezingControl(true);
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
         blackPanel.alpha = 1;
         PointsGainedScript.instance.playerDead = true;
         PointsGainedScript.instance.showingPoints = true;
     }
-<<<<<<< HEAD
 
     private void DestroyAllEnemies()
     {
@@ -292,6 +273,4 @@ public class GameManager : MonoBehaviour
         SaveJSON.SaveData();
         yield return new WaitForSecondsRealtime(3);
     }
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
 }

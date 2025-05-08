@@ -19,13 +19,6 @@ TagManager:
   - vegetables_position
   - vacio
   - enemy
-<<<<<<< HEAD
-=======
-  - BloqueHielo
-  - yetiWall
-  - cloudWall
-  - cloud
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
   layers:
   - Default
   - TransparentFX
@@ -34,15 +27,9 @@ TagManager:
   - Water
   - UI
   - floor
-<<<<<<< HEAD
   - 
   - 
   - 
-=======
-  - yeti
-  - wall collision
-  - cloud
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
   - 
   - 
   - 

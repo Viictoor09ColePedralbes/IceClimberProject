@@ -19,10 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction horizontal_ia, jump_ia, attack_ia;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D hammerCollider;
-<<<<<<< HEAD
     [SerializeField] private CapsuleCollider2D jumpCollider;
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     [SerializeField] private Transform raycastOrigin;
     [SerializeField] private LayerMask layerMask;
     private float checkRadius = 0.05f;
@@ -38,10 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject fallPoint;
     private float timeFallPoint, maxTimeFallPoint = 2f;
     [SerializeField] private Image[] lifesImages;
-<<<<<<< HEAD
     [SerializeField] private Image gameOverImage;
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     void Awake()
     {
         playerState = PLAYER_STATES.IDLE;
@@ -87,10 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if(horizontalValue != 0)
         {
             spriteRenderer.flipX = horizontalValue >= 1 ? true : false;
-<<<<<<< HEAD
             hammerCollider.offset = horizontalValue >= 1 ? new Vector2(0.6f, -0.1451442f) : new Vector2(-0.6f, -0.1451442f);
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
         }
         
         if(playerState != PLAYER_STATES.JUMPING)
@@ -159,10 +150,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isImpulsed)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-<<<<<<< HEAD
             jumpCollider.enabled = true;
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
             isImpulsed = true;
             animator.SetBool("isJumping", true);
         }
@@ -188,10 +176,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
             isImpulsed = false;
-<<<<<<< HEAD
             jumpCollider.enabled = false;
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
             animator.SetBool("isJumping", false);
             playerState = PLAYER_STATES.IDLE;
             destroyedTile = false;
@@ -208,11 +193,7 @@ public class PlayerMovement : MonoBehaviour
         if (hit.collider == null)
             return false;
 
-<<<<<<< HEAD
-        return hit.collider.CompareTag("Not_destruible_block") || hit.collider.CompareTag("Destruible_block");
-=======
         return hit.collider.CompareTag("Not_destruible_block") || hit.collider.CompareTag("Destruible_block") || hit.collider.CompareTag("cloud");
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     }
 
     public void FinishedAttack()
@@ -257,18 +238,10 @@ public class PlayerMovement : MonoBehaviour
             gameObject.transform.position = fallPoint.transform.position;
             rb.velocity = Vector2.zero;
         }
-<<<<<<< HEAD
         else if (collision.CompareTag("enemy") && playerState != PLAYER_STATES.JUMPING && playerState != PLAYER_STATES.ATTACKING)
         {
             LoseLife();
         }
-=======
-        else if (collision.CompareTag("enemy"))
-        {
-            LoseLife();
-        }
-
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     }
 
     public void FreezingControl(bool isFreezed)
@@ -308,15 +281,10 @@ public class PlayerMovement : MonoBehaviour
             switch (lifes)
             {
                 case 0:
-<<<<<<< HEAD
                     FreezingControl(true);
                     lifesImages[2].color = invisibleColor;
                     gameOverImage.color = new Vector4(1,1,1,1);
                     StartCoroutine(KillPlayer());
-=======
-                    lifesImages[2].color = invisibleColor;
-                    GameManager.instance.PlayerHasDead();
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
                     break;
                 case 1:
                     lifesImages[1].color = invisibleColor;
@@ -327,7 +295,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-<<<<<<< HEAD
 
     private IEnumerator KillPlayer()
     {
@@ -346,6 +313,4 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSecondsRealtime(2.5f);
         GameManager.instance.PlayerHasDead();
     }
-=======
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
 }

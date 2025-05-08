@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
 [System.Serializable]
 public static class PlayerValues
 {
@@ -61,16 +60,5 @@ public class PlayerValuesSerializable
         topHighScore = PlayerValues.topHighScore;
         highScore1 = PlayerValues.highScore1;
         highScore2 = PlayerValues.highScore2;
-=======
-public static class PlayerValues
-{
-    [SerializeField] private static int topHighScore, highScore1, highScore2, highMountain;
-    [SerializeField] private static int[] timeClearedLevel = new int[32];
-    [SerializeField] private static float timePlayed;
-
-    public static void SaveData()
-    {
-        // string playerInfoAsJSON = JsonUtility.ToJson(info); // info era una variable que referenciaba de PlayerValues
->>>>>>> 824093602cd369ac44b05addc3f40d56efe723d9
     }
 }
