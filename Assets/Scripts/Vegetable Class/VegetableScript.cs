@@ -9,6 +9,7 @@ public class VegetableScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private TMP_Text pointsText;
     private BoxCollider2D boxCollider;
+    [SerializeField] private AudioClip grabVegetableClip;
 
     void Awake()
     {
@@ -28,6 +29,7 @@ public class VegetableScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySFX(grabVegetableClip);
             pointsText.color = new Vector4(1, 1, 1, 1);
             boxCollider.enabled = false; // Para evitar una segunda colision
             StartCoroutine(animPoints());

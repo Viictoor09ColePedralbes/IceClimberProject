@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vegetable: {fileID: 11400000, guid: cc556a910b7a16d43a65e6d0a6adcdee, type: 2}
+  grabVegetableClip: {fileID: 8300000, guid: fd2bf03c032421142b2f6df849b45855, type: 3}
 --- !u!1 &9171580501757459420
 GameObject:
   m_ObjectHideFlags: 0

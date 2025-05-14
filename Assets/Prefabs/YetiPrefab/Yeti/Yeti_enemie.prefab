@@ -139,6 +139,9 @@ MonoBehaviour:
   reycastOrigin: {fileID: 2553531182393633759}
   iceCubeSpawn: {fileID: 6512601057774391567}
   bloqueDeHieloPrefab: {fileID: 5222468607347672647, guid: 0bc0c348dcfca08449ce13e162f8fae9, type: 3}
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &4696174573807340560
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -210,7 +213,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 5
 --- !u!95 &5533476685816736959
 Animator:
   serializedVersion: 5

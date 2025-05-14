@@ -26,7 +26,7 @@ public class YetiController : MonoBehaviour
     private GameObject bloqueDeHielo;
     private Boolean noHaySuelo = false;
     private bool bloqueCreado = false;
-    private bool cambioDireccion = false;
+    [SerializeField] private LayerMask raycastMask;
 
     void Start()
     {
@@ -43,7 +43,7 @@ public class YetiController : MonoBehaviour
         Debug.DrawLine(reycastOrigin.position, new Vector2(reycastOrigin.position.x, reycastOrigin.position.y - 0.3f), Color.green);
 
         // Detectar suelo con Raycast
-        RaycastHit2D hit = Physics2D.Raycast(reycastOrigin.position, Vector2.down, 2f);
+        RaycastHit2D hit = Physics2D.Raycast(reycastOrigin.position, Vector2.down, 2f, raycastMask);
 
         if (hit.collider == null)
         {
@@ -63,10 +63,10 @@ public class YetiController : MonoBehaviour
             
         }
 
-        if(bloqueCreado && bloqueDeHielo == null && !cambioDireccion)
+        if(bloqueCreado && bloqueDeHielo == null)
         {
+            bloqueCreado = false;
             CambiarDireccion();
-            cambioDireccion = true;
         }
 
     }
@@ -75,18 +75,12 @@ public class YetiController : MonoBehaviour
     {   
         if (collision.collider.CompareTag("yetiWall"))
         {
-            if (yeti_Life == 0)
-            {
-                Destroy(gameObject);
-            }
-
-            CambiarDireccion() ;
+            CambiarDireccion();
             Debug.Log("Hay colision YetiWall");
             if (noHaySuelo)
             {
                 Debug.Log("Se crea hielo");
                 CrearBloqueDeHielo();
-                
             }
         }
         
@@ -105,7 +99,6 @@ public class YetiController : MonoBehaviour
         bloqueDeHielo = Instantiate(bloqueDeHieloPrefab, iceCubeSpawn.position, Quaternion.identity);
         bloqueDeHielo.GetComponent<Rigidbody2D>().velocity = dir * speed;
         noHaySuelo = false;
-        cambioDireccion = false;
         bloqueCreado = true;
     }
 

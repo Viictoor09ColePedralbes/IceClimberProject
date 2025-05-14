@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PointsGainedScript : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasShowPoints;
+    [SerializeField] private TMP_Text actualMountainText;
     [SerializeField] private TMP_Text[] actualPointsTexts, winLose_texts, vegetablesPoints_texts, obtainedVegetables_text, destroyedIce_text, defeatedBirds_text, destroyedBlocks_text; // 0 es P1, 1 es P2
     public Image[] actualVegetable_images;
     [HideInInspector] public bool showingPoints, playerDead;
@@ -20,6 +21,7 @@ public class PointsGainedScript : MonoBehaviour
     [SerializeField] private Animator popoDoingSmth, nanaDoingSmth;
 
     private static PointsGainedScript pointsGainedScript;
+    [SerializeField] private AudioClip gainPointsClip;
     public static PointsGainedScript instance
     {
         get
@@ -47,6 +49,7 @@ public class PointsGainedScript : MonoBehaviour
         if (canvasShowPoints.alpha == 0)
         {
             Debug.Log("Showing canvas Points");
+            actualMountainText.text = GameManager.instance.mountainsCleared <= 99 ? GameManager.instance.mountainsCleared.ToString("MOUNTAIN 00") : 99.ToString("MOUNTAIN 00");
             canvasShowPoints.alpha = 1;
             foreach (TMP_Text i in winLose_texts)
             {
@@ -134,6 +137,7 @@ public class PointsGainedScript : MonoBehaviour
         Debug.Log("New Score: " + newScore);
         for (float i = 0; i < 1.1f; i += 0.1f)
         {
+            AudioManager.instance.PlaySFX(gainPointsClip);
             for (int j = 0; j < actualPointsTexts.Length; j++)
             {
                 actualPointsTexts[j].text = Mathf.Lerp(GameManager.instance.actualScore, newScore, i).ToString("000000");

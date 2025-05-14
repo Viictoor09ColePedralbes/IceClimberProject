@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector] public int initialMountain = 1, gainedPoints = 0;
     [HideInInspector] public bool areSecondPlayer = false, gameStarted = false, isOnBonusStage = false, stageFinished = false;
-    private bool hasEnterOnBS = true;
+    private bool hasEnterOnBS = true, moveCloudContr = false;
     private static GameManager gameManager;
     public static GameManager instance
     {
@@ -22,36 +22,40 @@ public class GameManager : MonoBehaviour
     }
     private int actualMountain;
     public int actualScore;
-    private int highScore, actualScene;
     private CameraUpScript[] camerasUP = new CameraUpScript[15];
     [SerializeField] private TMP_Text timeBonusStage_down, timeBonusStage_up;
-    private float timeBonusStage = 40.0f;
+    public float timeBonusStage = 40.0f;
+    private float timeCloudMov = 0;
     private PlayerMovement playerMovement;
     private Camera playerCamera;
-    private Transform playerTransform;
+    private Transform playerTransform, cloudContrTransf;
 
     [SerializeField] private GameObject[] mountains = new GameObject[32], mountainsExtras = new GameObject[32];
     private List<GameObject> enemiesInScene = new List<GameObject>();
-    private GameObject parentMountains, parentExtras, actualDestruible, actualNotDestruible, actualExtras;
+    private GameObject parentMountains, parentExtras, actualDestruible, actualExtras;
     private CanvasGroup blackPanel;
     [HideInInspector] public int[] thingsPoints = new int[4]; // 0 = vegetables, 1 = ice, 2 = birds, 3 = blocks
     public GameObject[] vegetablesPrefabs = new GameObject[10];
     private GameObject[] vegetablesInScene = new GameObject[4];
     private Transform[] vegetablesScenePosition = new Transform[4];
+    private Vector2 cloudPosDown = new Vector2(0, -5.8f), cloudPosUp = new Vector2(0, 5.8f);
 
     // Enemies variables
     [SerializeField] private GameObject[] enemiesPrefabs = new GameObject[3]; // 0 = yeti, 1 = oso, 2 = pajaro
     private const float MIN_BIRD_SPAWN_TIME = 10f, MAX_BIRD_SPAWN_TIME = 15f, MAX_BIRD_X = 8.2f, BIRD_Y = 4.3f;
     [HideInInspector] public bool birdAlive = false;
     private bool yetiSpawning = false;
-    private const float MIN_YETI_SPAWN_TIME = 10f, MAX_YETI_SPAWN_TIME = 15f;
+    private const float MIN_YETI_SPAWN_TIME = 15f, MAX_YETI_SPAWN_TIME = 25f;
 
     // User telemetry variables
+    public bool oneLifeGamemode = false;
     private float gameSessionTime = 0;
     [HideInInspector] public int pressedJump = 0;
-    private int mountainsCleared = 0;
+    [HideInInspector] public int mountainsCleared = 0;
     [HideInInspector] public int enemiesDefeated = 0;
 
+    // AudioClips
+    [SerializeField] private AudioClip menuMusic, levelMusic, winBonus, loseBonus;
 
     void Awake()
     {
@@ -60,20 +64,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         RequestGameManager();
-        /* BORRAR LO DE ABAJO DESPUES, SOLO PARA TEST
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        GetAllCamerasUp();
-        timeBonusStage_down = GameObject.FindGameObjectWithTag("bs_time_down").GetComponent<TMP_Text>();
-        timeBonusStage_up = GameObject.FindGameObjectWithTag("bs_time_up").GetComponent<TMP_Text>();
-        blackPanel = GameObject.FindGameObjectWithTag("blackPanel").GetComponent<CanvasGroup>();
-        actualMountain = 1;
-
-        parentMountains = GameObject.FindGameObjectWithTag("ParentMountains");
-        parentExtras = GameObject.FindGameObjectWithTag("ParentExtras");
-        InstantiateVegetables();
-        // BORRAR LO DE ARRIBA DESPUES, SOLO PARA TEST*/
     }
 
     void Update()
@@ -95,8 +85,11 @@ public class GameManager : MonoBehaviour
                     timeBonusStage_down.text = timeBonusStage.ToString("00.0");
                     timeBonusStage_up.text = timeBonusStage.ToString("00.0");
                 }
-                else if (timeBonusStage < 0 || stageFinished)
+                else if (timeBonusStage <= 0 || stageFinished)
                 {
+                    StopAllCoroutines();
+                    timeBonusStage_down.text = 0.0f.ToString("00.0");
+                    timeBonusStage_up.text = 0.0f.ToString("00.0");
                     playerMovement.animator.SetBool("hasHammer", true);
                     mountainsCleared++;
                     playerMovement.FreezingControl(true);
@@ -123,6 +116,21 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        if (moveCloudContr)
+        {
+            if(timeCloudMov < 1)
+            {
+                cloudContrTransf.position = Vector2.Lerp(cloudPosDown, cloudPosUp, timeCloudMov);
+                timeCloudMov += Time.deltaTime * 2;
+            }
+            else if(timeCloudMov >= 1)
+            {
+                cloudContrTransf.position = cloudPosUp;
+                moveCloudContr = false;
+                timeCloudMov = 0;
+            }
+        }
     }
 
     void OnEnable()
@@ -132,7 +140,6 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        actualScene = scene.buildIndex;
         actualMountain = initialMountain;
         
         if(scene.buildIndex == 1)
@@ -148,16 +155,29 @@ public class GameManager : MonoBehaviour
 
             parentMountains = GameObject.FindGameObjectWithTag("ParentMountains");
             parentExtras = GameObject.FindGameObjectWithTag("ParentExtras");
+            cloudContrTransf = GameObject.FindGameObjectWithTag("StartCloudMovement").GetComponent<Transform>();
+            moveCloudContr = true;
 
             actualDestruible = Instantiate(mountains[initialMountain-1], Vector2.zero, Quaternion.identity, parentMountains.transform);
-            // actualExtras = Instantiate(mountainsExtras[initialMountain], Vector2.zero, Quaternion.identity, parentExtras.transform);
+            actualExtras = Instantiate(mountainsExtras[initialMountain-1], Vector2.zero, Quaternion.identity, parentExtras.transform);
             playerMovement.destruibleTiles = GameObject.FindGameObjectWithTag("Destruible_block").GetComponent<Tilemap>();
             InstantiateVegetables();
+            if (oneLifeGamemode)
+            {
+                playerMovement.OneLifeGamemode();
+            }
+            AudioManager.instance.PlayBGM(levelMusic, true);
+        }
+        else if (scene.buildIndex == 0)
+        {
+            ResetVariables();
+            AudioManager.instance.PlayBGM(menuMusic, false);
         }
     }
 
     public void ChangeMountain()
     {
+        playerMovement.destruibleTiles = null;
         DeleteVegetables();
         playerCamera.transform.position = new Vector3(0, 0, -10);
         playerTransform.position = new Vector2(0, -2.53f);
@@ -173,17 +193,20 @@ public class GameManager : MonoBehaviour
         actualMountain++;
         if (actualDestruible)
             Destroy(actualDestruible);
-        if(actualNotDestruible)
-            Destroy(actualNotDestruible);
         if(actualExtras)
             Destroy(actualExtras);
 
-        actualDestruible = Instantiate(mountains[actualMountain], Vector2.zero, Quaternion.identity, parentMountains.transform);
-        // actualExtras = Instantiate(mountainsExtras[actualMountain], Vector2.zero, Quaternion.identity, parentExtras.transform);
-        playerMovement.destruibleTiles = GameObject.FindGameObjectWithTag("Destruible_block").GetComponent<Tilemap>();
+        if(actualMountain > 32)
+        {
+            actualMountain = 1;
+        }
+
+        actualDestruible = Instantiate(mountains[actualMountain-1], Vector2.zero, Quaternion.identity, parentMountains.transform);
+        actualExtras = Instantiate(mountainsExtras[actualMountain-1], Vector2.zero, Quaternion.identity, parentExtras.transform);
         InstantiateVegetables();
         blackPanel.alpha = 0;
         playerMovement.FreezingControl(false);
+        moveCloudContr = true;
     }
 
     private void GetAllCamerasUp()
@@ -283,7 +306,14 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator SaveLocalData()
     {
-        PlayerValues.SetScoreP1(actualScore);
+        if(oneLifeGamemode)
+        {
+            PlayerValues.SetScoreP2(actualScore);
+        }
+        else
+        {
+            PlayerValues.SetScoreP1(actualScore);
+        }
         SaveJSON.SaveData();
         yield return new WaitForSecondsRealtime(3);
     }
@@ -323,6 +353,7 @@ public class GameManager : MonoBehaviour
         BsonDocument bsonDoc = new BsonDocument
         {
             { "InitialMountain", initialMountain },
+            { "OneLifeGamemode", oneLifeGamemode },
             { "MountainsCleared", mountainsCleared },
             { "GameSessionTime", gameSessionTime },
             { "PointsObtained", actualScore },
@@ -330,5 +361,24 @@ public class GameManager : MonoBehaviour
             { "PressedJump", pressedJump },
         };
         return bsonDoc;
+    }
+
+    private void ResetVariables()
+    {
+        isOnBonusStage = false;
+        stageFinished = false;
+        gainedPoints = 0;
+        actualScore = 0;
+        birdAlive = false;
+        yetiSpawning = false;
+        oneLifeGamemode = false;
+        gameSessionTime = 0;
+        pressedJump = 0;
+        mountainsCleared = 0;
+        enemiesDefeated = 0;
+        foreach(int i in thingsPoints)
+        {
+            thingsPoints[i] = 0;
+        }
     }
 }

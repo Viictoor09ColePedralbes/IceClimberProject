@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: -1123937609, guid: eb30b2b36ce87a74f967605d7edcdda8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -165,3 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b4fb06d9973e54ca888cd331d02d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defeatBirdClip: {fileID: 8300000, guid: 336177a5982f9fa49aead81f3f759b14, type: 3}

@@ -21,6 +21,9 @@ TagManager:
   - enemy
   - BloqueHielo
   - yetiWall
+  - cloudWall
+  - StartCloudMovement
+  - cloud
   layers:
   - Default
   - TransparentFX
@@ -30,7 +33,7 @@ TagManager:
   - UI
   - floor
   - Yeti
-  - 
+  - Cloud
   - 
   - 
   - 

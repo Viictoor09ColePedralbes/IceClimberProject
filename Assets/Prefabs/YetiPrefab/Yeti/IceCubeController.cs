@@ -12,17 +12,25 @@ public class IceCubeController : MonoBehaviour
     public Tilemap tilemap;
 
     [SerializeField]
+    private TileBase[] possibleTiles = new TileBase[3];
     public TileBase fillTile;
-
 
     public LayerMask groundLayer; // Capa del suelo
     private bool getTile = true;
 
     void Start()
     {
-        if (tilemap == null)
+        if(gameObject.transform.position.y >= 3 && gameObject.transform.position.y < 12)
         {
-            tilemap = GameObject.Find("M1_tilemap_destruible_blocks").GetComponent<Tilemap>();
+            fillTile = possibleTiles[1];
+        }
+        else if(gameObject.transform.position.y >= 12)
+        {
+            fillTile = possibleTiles[2];
+        }
+        else
+        {
+            fillTile = possibleTiles[0];
         }
     }
 
@@ -31,7 +39,14 @@ public class IceCubeController : MonoBehaviour
         Debug.DrawLine(reycastOrigin.position, new Vector2(reycastOrigin.position.x, reycastOrigin.position.y - 0.3f), Color.red);
 
         // Lanzar el Raycast hacia abajo desde el prefab
-        RaycastHit2D hit = Physics2D.Raycast(reycastOrigin.position, Vector2.down, 2f);
+        RaycastHit2D hit = Physics2D.Raycast(reycastOrigin.position, Vector2.down, 2f, groundLayer);
+
+        if (tilemap == null && getTile)
+        {
+            //tilemap = GameObject.FindGameObjectWithTag("Destruible_block").GetComponent<Tilemap>();
+            tilemap = hit.collider.gameObject.GetComponent<Tilemap>();
+            getTile = false;
+        }
 
         // Si el Raycast NO encuentra suelo, significa que hay un agujero
         if (hit.collider == null)
@@ -50,12 +65,12 @@ public class IceCubeController : MonoBehaviour
             }
         }
 
-        if(getTile && hit.collider.CompareTag("Destruible_block"))
+        /*if(getTile && hit.collider.CompareTag("Destruible_block"))
         {
             Vector3Int tilePosition = tilemap.WorldToCell(reycastOrigin.position);
             fillTile = tilemap.GetTile(tilePosition);
             getTile = false;
-        }
+        }*/
 
     }
 

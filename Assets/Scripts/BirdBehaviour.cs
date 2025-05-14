@@ -11,6 +11,7 @@ public class BirdBehaviour : MonoBehaviour
     private float elapsedTime = 0;
     private const float X_MAX = 8.2f, Y_MAX = 4.3f, MAX_TIME = 6;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private AudioClip defeatBirdClip;
     void Awake()
     {
         mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
@@ -57,6 +58,7 @@ public class BirdBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Hammer"))
         {
+            AudioManager.instance.PlaySFX(defeatBirdClip);
             GameManager.instance.thingsPoints[2] += 1;
             GameManager.instance.birdAlive = false;
             GameManager.instance.enemiesDefeated += 1;

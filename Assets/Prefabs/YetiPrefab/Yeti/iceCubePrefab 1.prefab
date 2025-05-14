@@ -104,7 +104,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -175,6 +175,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reycastOrigin: {fileID: 5193463089933323027}
   tilemap: {fileID: 0}
+  possibleTiles:
+  - {fileID: 11400000, guid: 2e6022b1a87a3fb4499361be3d80feb1, type: 2}
+  - {fileID: 11400000, guid: 883d53f9bd600b2449adc758c383f2c5, type: 2}
+  - {fileID: 11400000, guid: 144560299f0f04c4c9dff8ef23bde0ba, type: 2}
   fillTile: {fileID: 11400000, guid: 2e6022b1a87a3fb4499361be3d80feb1, type: 2}
   groundLayer:
     serializedVersion: 2
@@ -194,7 +198,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

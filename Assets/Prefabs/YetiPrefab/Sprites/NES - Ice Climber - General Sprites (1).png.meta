@@ -600,7 +600,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NES - Ice Climber - General Sprites (1)_0: -2011496272
       NES - Ice Climber - General Sprites (1)_1: 1883312255
       NES - Ice Climber - General Sprites (1)_10: 205081940
       NES - Ice Climber - General Sprites (1)_100: 355687863
@@ -962,6 +961,9 @@ TextureImporter:
       NES - Ice Climber - General Sprites (1)_97: -843562935
       NES - Ice Climber - General Sprites (1)_98: 620844501
       NES - Ice Climber - General Sprites (1)_99: 1339921165
+      center_cloud: -1239793938
+      left_cloud: -2011496272
+      right_cloud: -1506198386
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

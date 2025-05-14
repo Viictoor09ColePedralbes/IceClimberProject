@@ -29,15 +29,18 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isImpulsed = false, hasHammer = true, destroyedTile = false;
     private float horizontalValue;
-    [SerializeField] private float speed = 1f, jumpForce = 1f, jumpMovementPenalization = 1f;
+    [SerializeField] private float speed = 1f, jumpForce = 1f, jumpMovementPenalization = 0.6f;
 
     [SerializeField] private GameObject fallPointPrefab;
     private GameObject fallPoint;
     private float timeFallPoint, maxTimeFallPoint = 2f;
     [SerializeField] private Image[] lifesImages;
     [SerializeField] private Image gameOverImage;
+    [SerializeField] private AudioClip jumpClip, destroyBlockClip, aerodactyl_clip, loseLifeClip;
+
     void Awake()
     {
+        lifes = 3;
         playerState = PLAYER_STATES.IDLE;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -50,12 +53,16 @@ public class PlayerMovement : MonoBehaviour
         horizontal_ia = inputMap.FindActionMap("Movement").FindAction("Horizontal");
         jump_ia = inputMap.FindActionMap("Movement").FindAction("Jump");
         attack_ia = inputMap.FindActionMap("Movement").FindAction("Attack");
-        lifes = 3;
     }
 
     void Update()
     {
-        if(playerState != PLAYER_STATES.ATTACKING)
+        if (!destroyedTile)
+        {
+            destruibleTiles = GameObject.FindGameObjectWithTag("Destruible_block").GetComponent<Tilemap>();
+        }
+            
+        if (playerState != PLAYER_STATES.ATTACKING)
         {
             horizontalValue = horizontal_ia.ReadValue<float>();
         }
@@ -109,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
             Jumping();
         }
 
-        if(attack_ia.triggered)
+        if(attack_ia.triggered && animator.GetBool("hasHammer"))
         {
             playerState = PLAYER_STATES.ATTACKING;
             Attacking();
@@ -133,11 +140,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (jump_ia.triggered)
         {
+            AudioManager.instance.PlaySFX(jumpClip);
             playerState = PLAYER_STATES.JUMPING;
             Jumping();
         }
 
-        if (attack_ia.triggered)
+        if (attack_ia.triggered && animator.GetBool("hasHammer"))
         {
             rb.velocity = Vector2.zero;
             playerState = PLAYER_STATES.ATTACKING;
@@ -160,14 +168,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attacking()
     {
-        if(!hammerCollider.enabled && animator.GetBool("hasHammer") == true)
+        if (!hammerCollider.enabled && animator.GetBool("isAttacking") == false)
         {
             hammerCollider.enabled = true;
             animator.SetBool("isAttacking", true);
-        }
-        else if(animator.GetBool("hasHammer") == false)
-        {
-             FinishedAttack();
         }
     }
 
@@ -175,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsTouchingFloor() && rb.velocity.y <= 0)
         {
+            Debug.Log("Is touching floor");
             rb.velocity = new Vector2(0, rb.velocity.y);
             isImpulsed = false;
             jumpCollider.enabled = false;
@@ -208,18 +213,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void DestroyBlock()
     {
-        Vector2 checkPos = (Vector2)transform.position + Vector2.up * 0.6f;
+        Vector2 checkPos = (Vector2)transform.position + Vector2.up * 0.7f;
         Collider2D hit = Physics2D.OverlapCircle(checkPos, checkRadius, layerMask);
 
         if (hit != null)
         {
             Vector3Int tilePos = destruibleTiles.WorldToCell(checkPos);
-            Debug.Log("Tile pos: " + tilePos + " Has tile: " + destruibleTiles.HasTile(tilePos) + "Destroyed Tile: " + destroyedTile);
 
             if (destruibleTiles.HasTile(tilePos) && !destroyedTile && hit.CompareTag("Destruible_block"))
             {
                 destroyedTile = true;
                 destruibleTiles.SetTile(tilePos, null);
+                AudioManager.instance.PlaySFX(destroyBlockClip);
                 GameManager.instance.thingsPoints[3] += 1;
             }
         }
@@ -231,13 +236,21 @@ public class PlayerMovement : MonoBehaviour
         {
             GameManager.instance.gainedPoints += 6000;
             GameManager.instance.stageFinished = true;
-            Debug.Log("Aerodactyl tocado");
+            AudioManager.instance.PlaySFX(aerodactyl_clip);
         }
         else if (collision.CompareTag("vacio"))
         {
-            LoseLife();
-            gameObject.transform.position = fallPoint.transform.position;
-            rb.velocity = Vector2.zero;
+            if (GameManager.instance.isOnBonusStage)
+            {
+                GameManager.instance.timeBonusStage = 0;
+            }
+            else
+            {
+                LoseLife();
+                gameObject.transform.position = fallPoint.transform.position;
+                rb.velocity = Vector2.zero;
+            }
+            
         }
         else if (collision.CompareTag("enemy") && playerState != PLAYER_STATES.JUMPING && playerState != PLAYER_STATES.ATTACKING)
         {
@@ -275,6 +288,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void LoseLife()
     {
+        AudioManager.instance.PlaySFX(loseLifeClip);
         lifes--;
         for (int i = 0; i < lifesImages.Length; i++)
         {
@@ -313,5 +327,14 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(2.5f);
         GameManager.instance.PlayerHasDead();
+    }
+
+    public void OneLifeGamemode()
+    {
+        Debug.Log("Vidas actuales: " + lifes);
+        Debug.Log("Ejecuta OneLifeGamemode");
+        LoseLife();
+        LoseLife();
+        Debug.Log("Vidas actuales: " + lifes);
     }
 }

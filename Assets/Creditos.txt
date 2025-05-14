@@ -8,3 +8,8 @@ Los puntos por superar el BS son los puntos de la verdura actual multiplicados p
 mongodb -> user: admin contra: admin
 
 conección a MongoDB: mongodb+srv://admin:admin@iceclimberdb.6t8buo1.mongodb.net/?retryWrites=true&w=majority&appName=IceClimberDB
+
+Labs (MySQL):
+Database: IceClimbers_MySQL-Database
+User: MySQL-Database
+Contra del user: PopoNana10#

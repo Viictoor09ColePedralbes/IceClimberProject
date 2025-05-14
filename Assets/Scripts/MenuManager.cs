@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System;
 
 public class MenuManager : MonoBehaviour
 {
@@ -38,6 +39,10 @@ public class MenuManager : MonoBehaviour
     {
         if (inputStartGame.triggered)
         {
+            if(gameModeSelection == 1)
+            {
+                GameManager.instance.oneLifeGamemode = true;
+            }
             StartGame();
         }
 
@@ -113,7 +118,17 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+            string playerID = Guid.NewGuid().ToString();
+            Debug.Log(playerID);
+            PlayerValues.id_player = playerID;
+            SaveJSON.SaveData();
             Debug.Log("No se encontró el archivo de datos.");
         }
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Saliste del juego");
+        Application.Quit();
     }
 }

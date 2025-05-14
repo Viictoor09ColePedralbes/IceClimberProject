@@ -1,3 +1,4 @@
+using MongoDB.Bson.Serialization.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 public static class PlayerValues
 {
     public static int topHighScore, highScore1, highScore2;
-
+    public static string id_player;
     public static void SetScoreP1(int scoreP1)
     {
         if(scoreP1 > topHighScore)
@@ -51,12 +52,14 @@ public static class PlayerValues
 
 public class PlayerValuesSerializable
 {
+    public string id_player;
     public int topHighScore;
     public int highScore1;
     public int highScore2;
 
     public PlayerValuesSerializable()
     {
+        id_player = PlayerValues.id_player;
         topHighScore = PlayerValues.topHighScore;
         highScore1 = PlayerValues.highScore1;
         highScore2 = PlayerValues.highScore2;

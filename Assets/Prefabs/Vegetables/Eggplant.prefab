@@ -316,3 +316,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vegetable: {fileID: 11400000, guid: 743e42cd271ec9e489d3326842cd97cb, type: 2}
+  grabVegetableClip: {fileID: 8300000, guid: fd2bf03c032421142b2f6df849b45855, type: 3}
