@@ -22,6 +22,10 @@ public class BirdBehaviour : MonoBehaviour
     void Update()
     {
         Movement();
+        if (GameManager.instance.isOnBonusStage)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void CreateNewPosition()

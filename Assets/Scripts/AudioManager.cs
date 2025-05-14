@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource bgmSource;
     private List<AudioSource> sfxSource = new List<AudioSource>();
-    private const int SFX_POOL_SIZE = 4;
+    private const int SFX_POOL_SIZE = 5;
 
     void Awake()
     {
@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
 
         bgmSource = transform.Find("BGM_source").GetComponent<AudioSource>();
         
-        for(int i = 0; i < SFX_POOL_SIZE; i++)
+        for(int i = 0; i < SFX_POOL_SIZE; i++) // Creamos el "pool" de SFX Sources
         {
             GameObject sfxObj = new GameObject("SFX_Source_" + (i+1));
             sfxObj.isStatic = true;
@@ -63,6 +63,7 @@ public class AudioManager : MonoBehaviour
             if (!i.isPlaying)
             {
                 i.PlayOneShot(clip);
+                return; // Una vez encuentra un AudioSource para reproducirlo termina el metodo
             }
         }
     }

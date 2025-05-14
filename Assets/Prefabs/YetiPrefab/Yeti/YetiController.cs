@@ -69,6 +69,10 @@ public class YetiController : MonoBehaviour
             CambiarDireccion();
         }
 
+        if (GameManager.instance.isOnBonusStage)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

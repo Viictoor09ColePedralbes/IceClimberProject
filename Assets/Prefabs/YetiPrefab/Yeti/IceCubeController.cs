@@ -65,12 +65,10 @@ public class IceCubeController : MonoBehaviour
             }
         }
 
-        /*if(getTile && hit.collider.CompareTag("Destruible_block"))
+        if (GameManager.instance.isOnBonusStage)
         {
-            Vector3Int tilePosition = tilemap.WorldToCell(reycastOrigin.position);
-            fillTile = tilemap.GetTile(tilePosition);
-            getTile = false;
-        }*/
+            Destroy(gameObject);
+        }
 
     }
 

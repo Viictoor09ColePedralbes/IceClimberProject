@@ -112,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(jump_ia.triggered)
         {
+            AudioManager.instance.PlaySFX(jumpClip);
             playerState = PLAYER_STATES.JUMPING;
             Jumping();
         }
@@ -243,6 +244,7 @@ public class PlayerMovement : MonoBehaviour
             if (GameManager.instance.isOnBonusStage)
             {
                 GameManager.instance.timeBonusStage = 0;
+                GameManager.instance.timeToShowPoints = 5;
             }
             else
             {
@@ -326,7 +328,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         yield return new WaitForSecondsRealtime(2.5f);
-        GameManager.instance.PlayerHasDead();
+        StartCoroutine(GameManager.instance.PlayerHasDead());
     }
 
     public void OneLifeGamemode()

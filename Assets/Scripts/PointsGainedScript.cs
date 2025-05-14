@@ -11,7 +11,7 @@ public class PointsGainedScript : MonoBehaviour
     [SerializeField] private TMP_Text actualMountainText;
     [SerializeField] private TMP_Text[] actualPointsTexts, winLose_texts, vegetablesPoints_texts, obtainedVegetables_text, destroyedIce_text, defeatedBirds_text, destroyedBlocks_text; // 0 es P1, 1 es P2
     public Image[] actualVegetable_images;
-    [HideInInspector] public bool showingPoints, playerDead;
+    [HideInInspector] public bool showingPoints, playerDead, startSounds = false;
     private Color visible = new Vector4(1,1,1,1), invisible = new Vector4(1,1,1,0);
 
     [HideInInspector] public int pointsVegetables;
@@ -21,7 +21,8 @@ public class PointsGainedScript : MonoBehaviour
     [SerializeField] private Animator popoDoingSmth, nanaDoingSmth;
 
     private static PointsGainedScript pointsGainedScript;
-    [SerializeField] private AudioClip gainPointsClip;
+    [SerializeField] private AudioClip gainPointsClip, cryClip, jumpClip;
+    private bool areDoingSound = false;
     public static PointsGainedScript instance
     {
         get
@@ -42,6 +43,11 @@ public class PointsGainedScript : MonoBehaviour
             StartCoroutine(showPoints());
             showingPoints = false;
         }
+
+        if (!areDoingSound && startSounds)
+        {
+            StartCoroutine(doSound());
+        }
     }
 
     private IEnumerator showPoints()
@@ -49,7 +55,7 @@ public class PointsGainedScript : MonoBehaviour
         if (canvasShowPoints.alpha == 0)
         {
             Debug.Log("Showing canvas Points");
-            actualMountainText.text = GameManager.instance.mountainsCleared <= 99 ? GameManager.instance.mountainsCleared.ToString("MOUNTAIN 00") : 99.ToString("MOUNTAIN 00");
+            actualMountainText.text = GameManager.instance.mountainsCleared >= 99 ? 99.ToString("MOUNTAIN 00") : GameManager.instance.mountainsCleared.ToString("MOUNTAIN 00");
             canvasShowPoints.alpha = 1;
             foreach (TMP_Text i in winLose_texts)
             {
@@ -102,6 +108,7 @@ public class PointsGainedScript : MonoBehaviour
                     {
                         canvasShowPoints.alpha = 0;
                         ChangeVisibilityOfAllTexts(false, 0);
+                        startSounds = false;
                         GameManager.instance.ChangeMountain();
                     }
                     showingPoints = false;
@@ -124,9 +131,11 @@ public class PointsGainedScript : MonoBehaviour
 
     private IEnumerator sumPuntosBonusStage()
     {
+        bool doSound = false;
         int newScore;
         if (GameManager.instance.stageFinished)
         {
+            doSound = true;
             newScore = GameManager.instance.actualScore + POINTS_BONUS_STAGE;
         }
         else
@@ -137,9 +146,13 @@ public class PointsGainedScript : MonoBehaviour
         Debug.Log("New Score: " + newScore);
         for (float i = 0; i < 1.1f; i += 0.1f)
         {
-            AudioManager.instance.PlaySFX(gainPointsClip);
             for (int j = 0; j < actualPointsTexts.Length; j++)
             {
+                if (doSound)
+                {
+                    AudioManager.instance.PlaySFX(gainPointsClip);
+                }
+                AudioManager.instance.PlaySFX(gainPointsClip);
                 actualPointsTexts[j].text = Mathf.Lerp(GameManager.instance.actualScore, newScore, i).ToString("000000");
             }
             yield return new WaitForSecondsRealtime(0.1f);
@@ -149,12 +162,21 @@ public class PointsGainedScript : MonoBehaviour
     }
     private IEnumerator sumPoints(TMP_Text[] text, int thingPoint, int multPoints)
     {
+        bool doSound = false;
         int newScore = GameManager.instance.actualScore + (GameManager.instance.thingsPoints[thingPoint] * multPoints);
+        if(GameManager.instance.actualScore < newScore)
+        {
+            doSound = true;
+        }
         Debug.Log("New Score: " + newScore);
         for (float i = 0; i < 1.1f; i += 0.1f)
         {
             for(int j = 0; j < text.Length; j++)
             {
+                if (doSound)
+                {
+                    AudioManager.instance.PlaySFX(gainPointsClip);
+                }
                 text[j].text = Mathf.Lerp(0, GameManager.instance.thingsPoints[thingPoint], i).ToString("00");
                 actualPointsTexts[j].text = Mathf.Lerp(GameManager.instance.actualScore, newScore, i).ToString("000000");
             }
@@ -227,5 +249,13 @@ public class PointsGainedScript : MonoBehaviour
             pointsGainedScript = FindObjectOfType<PointsGainedScript>();
         }
         return pointsGainedScript;
+    }
+
+    private IEnumerator doSound()
+    {
+        areDoingSound = true;
+        AudioManager.instance.PlaySFX(GameManager.instance.stageFinished ? jumpClip : cryClip);
+        yield return new WaitForSecondsRealtime(1f);
+        areDoingSound = false;
     }
 }

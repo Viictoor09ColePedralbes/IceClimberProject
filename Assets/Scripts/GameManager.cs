@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public int actualScore;
     private CameraUpScript[] camerasUP = new CameraUpScript[15];
     [SerializeField] private TMP_Text timeBonusStage_down, timeBonusStage_up;
-    public float timeBonusStage = 40.0f;
+    public float timeBonusStage = 40.0f, timeToShowPoints = 0;
     private float timeCloudMov = 0;
     private PlayerMovement playerMovement;
     private Camera playerCamera;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int enemiesDefeated = 0;
 
     // AudioClips
-    [SerializeField] private AudioClip menuMusic, levelMusic, winBonus, loseBonus;
+    [SerializeField] private AudioClip menuMusic, levelMusic, gameOverClip;
 
     void Awake()
     {
@@ -72,9 +72,11 @@ public class GameManager : MonoBehaviour
         {
             if(hasEnterOnBS)
             {
-                DestroyAllEnemies();
+                StopAllCoroutines();
+                AudioManager.instance.PlayBGM(menuMusic, true);
                 playerMovement.animator.SetBool("hasHammer", false);
                 timeBonusStage = 40.0f;
+                timeToShowPoints = 0;
                 hasEnterOnBS = false;
             }
             else
@@ -87,15 +89,23 @@ public class GameManager : MonoBehaviour
                 }
                 else if (timeBonusStage <= 0 || stageFinished)
                 {
-                    StopAllCoroutines();
-                    timeBonusStage_down.text = 0.0f.ToString("00.0");
-                    timeBonusStage_up.text = 0.0f.ToString("00.0");
-                    playerMovement.animator.SetBool("hasHammer", true);
-                    mountainsCleared++;
+                    AudioManager.instance.StopBGM();
                     playerMovement.FreezingControl(true);
-                    blackPanel.alpha = 1;
-                    PointsGainedScript.instance.showingPoints = true; // Para mostrar los puntos obtenidos y ver como se suman a los ya acumulados
-                    isOnBonusStage = false;
+                    if(timeToShowPoints < 5)
+                    {
+                        timeToShowPoints += Time.deltaTime;
+                    } 
+                    else if(timeToShowPoints >= 5)
+                    {
+                        mountainsCleared++;
+                        timeBonusStage_down.text = 0.0f.ToString("00.0");
+                        timeBonusStage_up.text = 0.0f.ToString("00.0");
+                        playerMovement.animator.SetBool("hasHammer", true);
+                        blackPanel.alpha = 1;
+                        PointsGainedScript.instance.startSounds = true;
+                        PointsGainedScript.instance.showingPoints = true; // Para mostrar los puntos obtenidos y ver como se suman a los ya acumulados
+                        isOnBonusStage = false;
+                    }
                 }
             }
         }
@@ -205,6 +215,7 @@ public class GameManager : MonoBehaviour
         actualExtras = Instantiate(mountainsExtras[actualMountain-1], Vector2.zero, Quaternion.identity, parentExtras.transform);
         InstantiateVegetables();
         blackPanel.alpha = 0;
+        AudioManager.instance.PlayBGM(levelMusic, true);
         playerMovement.FreezingControl(false);
         moveCloudContr = true;
     }
@@ -266,22 +277,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayerHasDead()
+    public IEnumerator PlayerHasDead()
     {
         gameStarted = false;
         blackPanel.alpha = 1;
-        DestroyAllEnemies();
+        AudioManager.instance.PlaySFX(gameOverClip);
+        yield return new WaitForSecondsRealtime(5);
+        AudioManager.instance.StopBGM();
         PointsGainedScript.instance.playerDead = true;
         PointsGainedScript.instance.showingPoints = true;
-    }
-
-    private void DestroyAllEnemies()
-    {
-        for(int i = 0; i < enemiesInScene.Count; i++)
-        {
-            Destroy(enemiesInScene[i].gameObject);
-            enemiesInScene.RemoveAt(i);
-        }
     }
 
     private IEnumerator BirdSpawn()
@@ -290,7 +294,6 @@ public class GameManager : MonoBehaviour
         {
             yield break;
         }
-        Debug.Log("Coroutine pajaro empezada");
         birdAlive = true;
         float timeToSpawn = Random.Range(MIN_BIRD_SPAWN_TIME, MAX_BIRD_SPAWN_TIME);
         yield return new WaitForSecondsRealtime(timeToSpawn);
