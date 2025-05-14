@@ -152,7 +152,6 @@ public class PointsGainedScript : MonoBehaviour
                 {
                     AudioManager.instance.PlaySFX(gainPointsClip);
                 }
-                AudioManager.instance.PlaySFX(gainPointsClip);
                 actualPointsTexts[j].text = Mathf.Lerp(GameManager.instance.actualScore, newScore, i).ToString("000000");
             }
             yield return new WaitForSecondsRealtime(0.1f);

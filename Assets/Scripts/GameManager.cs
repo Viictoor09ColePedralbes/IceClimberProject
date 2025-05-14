@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
                 StopAllCoroutines();
                 AudioManager.instance.PlayBGM(menuMusic, true);
                 playerMovement.animator.SetBool("hasHammer", false);
-                timeBonusStage = 40.0f;
                 timeToShowPoints = 0;
                 hasEnterOnBS = false;
             }
@@ -194,6 +193,7 @@ public class GameManager : MonoBehaviour
         ReactivateCamerasUp();
         hasEnterOnBS = true;
         stageFinished = false;
+        timeBonusStage = 40;
 
         for(int i = 0; i < thingsPoints.Length; i++)
         {
