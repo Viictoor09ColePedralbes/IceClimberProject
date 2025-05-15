@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public Animator animator;
     private Rigidbody2D rb;
     [SerializeField] private InputActionAsset inputMap;
-    private InputAction horizontal_ia, jump_ia, attack_ia;
+    private InputAction horizontal_ia, jump_ia, attack_ia, pause_ia;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D hammerCollider;
     [SerializeField] private CapsuleCollider2D jumpCollider;
@@ -36,7 +36,11 @@ public class PlayerMovement : MonoBehaviour
     private float timeFallPoint, maxTimeFallPoint = 2f;
     [SerializeField] private Image[] lifesImages;
     [SerializeField] private Image gameOverImage;
-    [SerializeField] private AudioClip jumpClip, destroyBlockClip, aerodactyl_clip, loseLifeClip;
+    [SerializeField] private AudioClip jumpClip, destroyBlockClip, aerodactyl_clip, loseLifeClip, gameOverClip;
+
+    // Variables para pause
+    [SerializeField] private CanvasGroup pauseMenu;
+    private bool inPause = false;
 
     void Awake()
     {
@@ -53,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         horizontal_ia = inputMap.FindActionMap("Movement").FindAction("Horizontal");
         jump_ia = inputMap.FindActionMap("Movement").FindAction("Jump");
         attack_ia = inputMap.FindActionMap("Movement").FindAction("Attack");
+        pause_ia = inputMap.FindActionMap("Other").FindAction("Pause");
     }
 
     void Update()
@@ -94,6 +99,12 @@ public class PlayerMovement : MonoBehaviour
         if(playerState != PLAYER_STATES.JUMPING)
         {
             FallControl();
+        }
+
+        if (pause_ia.triggered)
+        {
+            inPause = !inPause;
+            OnPause(inPause);
         }
     }
 
@@ -319,8 +330,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 initialPos = gameOverTransf.position;
         Vector3 finalPos = new Vector3(gameOverTransf.position.x, 887.5f, gameOverTransf.position.z);
         float time = 0, maxTime = 1.5f;
+        AudioManager.instance.PlaySFX(gameOverClip);
 
-        while(time < maxTime)
+        while (time < maxTime)
         {
             gameOverTransf.position = Vector3.Lerp(initialPos, finalPos, time / maxTime);
             time += Time.deltaTime;
@@ -328,15 +340,31 @@ public class PlayerMovement : MonoBehaviour
         }
 
         yield return new WaitForSecondsRealtime(2.5f);
-        StartCoroutine(GameManager.instance.PlayerHasDead());
+        GameManager.instance.PlayerHasDead();
     }
 
     public void OneLifeGamemode()
     {
-        Debug.Log("Vidas actuales: " + lifes);
-        Debug.Log("Ejecuta OneLifeGamemode");
         LoseLife();
         LoseLife();
-        Debug.Log("Vidas actuales: " + lifes);
+    }
+
+    public void OnPause(bool inPauseT)
+    {
+        inPause = inPauseT;
+        Debug.Log("Entra en OnPause");
+        FreezingControl(inPauseT);
+        pauseMenu.blocksRaycasts = inPauseT;
+        pauseMenu.alpha = inPauseT ? 1 : 0;
+        pauseMenu.interactable = inPauseT;
+        Time.timeScale = inPauseT ? 0 : 1;
+    }
+
+    public void ClickBotonGoToMenu()
+    {
+        pauseMenu.blocksRaycasts = false;
+        pauseMenu.alpha = 0;
+        pauseMenu.interactable = false;
+        GameManager.instance.GoToMenuButton();
     }
 }

@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int enemiesDefeated = 0;
 
     // AudioClips
-    [SerializeField] private AudioClip menuMusic, levelMusic, gameOverClip;
+    [SerializeField] private AudioClip menuMusic, levelMusic;
 
     void Awake()
     {
@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
         playerMovement.destruibleTiles = null;
         DeleteVegetables();
         playerCamera.transform.position = new Vector3(0, 0, -10);
-        playerTransform.position = new Vector2(0, -2.53f);
+        playerTransform.position = new Vector2(-1.1f, -2.53f);
         ReactivateCamerasUp();
         hasEnterOnBS = true;
         stageFinished = false;
@@ -277,12 +277,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator PlayerHasDead()
+    public void PlayerHasDead()
     {
         gameStarted = false;
         blackPanel.alpha = 1;
-        AudioManager.instance.PlaySFX(gameOverClip);
-        yield return new WaitForSecondsRealtime(5);
         AudioManager.instance.StopBGM();
         PointsGainedScript.instance.playerDead = true;
         PointsGainedScript.instance.showingPoints = true;
@@ -383,5 +381,17 @@ public class GameManager : MonoBehaviour
         {
             thingsPoints[i] = 0;
         }
+    }
+
+    public void GoToMenuButton()
+    {
+        mountainsCleared++;
+        Time.timeScale = 1;
+        playerMovement.FreezingControl(true);
+        StopAllCoroutines();
+        gameStarted = false;
+        blackPanel.alpha = 1;
+        PointsGainedScript.instance.playerDead = true;
+        PointsGainedScript.instance.showingPoints = true;
     }
 }
