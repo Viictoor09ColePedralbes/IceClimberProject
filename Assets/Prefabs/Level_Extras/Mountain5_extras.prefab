@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 5051835742204867007}
   m_Layer: 8
   m_Name: Cloud_1
-  m_TagString: cloud
+  m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 6655358692330882988}
   m_Layer: 8
   m_Name: Cloud_1 (3)
-  m_TagString: cloud
+  m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1832,7 +1832,7 @@ GameObject:
   - component: {fileID: 2811072962251850190}
   m_Layer: 8
   m_Name: Cloud_1 (4)
-  m_TagString: cloud
+  m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2147,7 +2147,7 @@ GameObject:
   - component: {fileID: 1770671166710459173}
   m_Layer: 8
   m_Name: Cloud_1 (1)
-  m_TagString: cloud
+  m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3074,7 +3074,7 @@ GameObject:
   - component: {fileID: 7539729701891362709}
   m_Layer: 8
   m_Name: Cloud_1 (2)
-  m_TagString: cloud
+  m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

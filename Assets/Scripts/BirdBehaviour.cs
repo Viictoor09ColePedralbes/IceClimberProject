@@ -12,10 +12,15 @@ public class BirdBehaviour : MonoBehaviour
     private const float X_MAX = 8.2f, Y_MAX = 4.3f, MAX_TIME = 6;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private AudioClip defeatBirdClip;
+    private Animator birdAnimator;
+    private BoxCollider2D boxCollider;
+
     void Awake()
     {
         mainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        birdAnimator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
         CreateNewPosition();
     }
 
@@ -62,11 +67,26 @@ public class BirdBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Hammer"))
         {
+            boxCollider.enabled = false;
+            birdAnimator.SetBool("isDead", true);
             AudioManager.instance.PlaySFX(defeatBirdClip);
             GameManager.instance.thingsPoints[2] += 1;
             GameManager.instance.birdAlive = false;
             GameManager.instance.enemiesDefeated += 1;
-            Destroy(gameObject);
+            StartCoroutine(DeadAnimation());
         }
+    }
+
+    private IEnumerator DeadAnimation()
+    {
+        float elapsedTime = 0, maxTime = 0.75f;
+        Vector2 deadPoint = new Vector2(gameObject.transform.position.x, mainCameraTransform.position.y - 6f), initialPos = gameObject.transform.position;
+        while (elapsedTime < maxTime)
+        {
+            gameObject.transform.position = Vector2.Lerp(initialPos, deadPoint, elapsedTime / maxTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }

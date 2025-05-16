@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour
 
     // Enemies variables
     [SerializeField] private GameObject[] enemiesPrefabs = new GameObject[3]; // 0 = yeti, 1 = oso, 2 = pajaro
-    private const float MIN_BIRD_SPAWN_TIME = 10f, MAX_BIRD_SPAWN_TIME = 15f, MAX_BIRD_X = 8.2f, BIRD_Y = 4.3f;
+    private const float MIN_BIRD_SPAWN_TIME = 20f, MAX_BIRD_SPAWN_TIME = 25f, MAX_BIRD_X = 8.2f, BIRD_Y = 4.3f;
     [HideInInspector] public bool birdAlive = false;
     private bool yetiSpawning = false;
-    private const float MIN_YETI_SPAWN_TIME = 15f, MAX_YETI_SPAWN_TIME = 25f;
+    private const float MIN_YETI_SPAWN_TIME = 5, MAX_YETI_SPAWN_TIME = 5;
 
     // User telemetry variables
     public bool oneLifeGamemode = false;
@@ -321,6 +321,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator YetiSpawn()
     {
+        if (yetiSpawning)
+        {
+            yield break;
+        }
         yetiSpawning = true;
         float timeToSpawn = Random.Range(MIN_YETI_SPAWN_TIME, MAX_YETI_SPAWN_TIME);
         yield return new WaitForSecondsRealtime(timeToSpawn);
@@ -377,7 +381,7 @@ public class GameManager : MonoBehaviour
         pressedJump = 0;
         mountainsCleared = 0;
         enemiesDefeated = 0;
-        foreach(int i in thingsPoints)
+        for (int i = 0; i < thingsPoints.Length; i++)
         {
             thingsPoints[i] = 0;
         }

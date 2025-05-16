@@ -27,13 +27,26 @@ public class YetiController : MonoBehaviour
     private Boolean noHaySuelo = false;
     private bool bloqueCreado = false;
     [SerializeField] private LayerMask raycastMask;
+    private Animator animator;
+    private bool goingToDead = false;
+    [SerializeField] private BoxCollider2D boxCollider;
+    private Rigidbody2D rb;
+    private float time;
+    private const float MAX_TIME = 0.15f;
 
-    void Start()
+    void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>(); // Obtener el componente SpriteRenderer
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         if(gameObject.transform.position.x < 0)
         {
+            spriteRenderer.flipX = true;
             CambiarDireccion();
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
         }
     }
 
@@ -48,9 +61,13 @@ public class YetiController : MonoBehaviour
         if (hit.collider == null)
         {
             // No hay suelo, activar modo regreso
-            CambiarDireccion();
+            if (!goingToDead)
+            {
+                CambiarDireccion();
+            }
             noHaySuelo = true;
             Debug.Log("NoTieneSuelo: " + noHaySuelo);
+
         }
 
         // Mover al personaje en la dirección actual si no está regresando
@@ -73,6 +90,19 @@ public class YetiController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(goingToDead)
+        {
+            if(time < MAX_TIME)
+            {
+                time += Time.deltaTime;
+            }
+            else if(time >= MAX_TIME)
+            {
+                spriteRenderer.flipX = !spriteRenderer.flipX;
+                time = 0;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -92,10 +122,11 @@ public class YetiController : MonoBehaviour
 
     void CambiarDireccion()
     {
+        Debug.Log("Esta cambiando direccion");
         dir = -dir;
         reycastOrigin.localPosition = new Vector3(-reycastOrigin.localPosition.x, reycastOrigin.localPosition.y, 0);
         iceCubeSpawn.localPosition = new Vector3(-iceCubeSpawn.localPosition.x, iceCubeSpawn.localPosition.y, 0);
-        spriteRenderer.flipX = !spriteRenderer.flipX; // Rotar sprite
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     void CrearBloqueDeHielo()
@@ -108,15 +139,21 @@ public class YetiController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Hammer"))
+        if (collider.CompareTag("Hammer") && !goingToDead)
         {
+            boxCollider.enabled = false;
+            animator.SetBool("isDead", true);
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            CambiarDireccion();
             if(bloqueDeHielo)
             {
                 Destroy(bloqueDeHielo);
                 GameManager.instance.thingsPoints[1] += 1;
             }
             GameManager.instance.enemiesDefeated += 1;
-            Destroy(gameObject);
+            goingToDead = true;
+            Destroy(gameObject, 7f);
+            speed += 2;
         }
     }
 

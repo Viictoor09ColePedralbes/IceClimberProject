@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -1435643685, guid: 7d6f2f77c7bf37d4c885fecff7db763a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.75, y: 0.8}
@@ -142,6 +142,7 @@ MonoBehaviour:
   raycastMask:
     serializedVersion: 2
     m_Bits: 64
+  boxCollider: {fileID: 4696174573807340560}
 --- !u!61 &4696174573807340560
 BoxCollider2D:
   m_ObjectHideFlags: 0

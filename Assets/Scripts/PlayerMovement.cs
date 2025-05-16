@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -27,13 +28,14 @@ public class PlayerMovement : MonoBehaviour
 
     public Tilemap destruibleTiles;
 
-    private bool isImpulsed = false, hasHammer = true, destroyedTile = false;
+    private bool isImpulsed = false, hasHammer = true, destroyedTile = false, isInmune = false;
     private float horizontalValue;
     [SerializeField] private float speed = 1f, jumpForce = 1f, jumpMovementPenalization = 0.6f;
 
     [SerializeField] private GameObject fallPointPrefab;
     private GameObject fallPoint;
-    private float timeFallPoint, maxTimeFallPoint = 2f;
+    private float timeFallPoint, maxTimeFallPoint = 2f, elapsedInmTime = 0, alphaInmune = 1;
+    private const float MAX_INM_TIME = 2;
     [SerializeField] private Image[] lifesImages;
     [SerializeField] private Image gameOverImage;
     [SerializeField] private AudioClip jumpClip, destroyBlockClip, aerodactyl_clip, loseLifeClip, gameOverClip;
@@ -62,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
+        Debug.Log("Estado actual: " + playerState.ToString());
         if (!destroyedTile)
         {
             destruibleTiles = GameObject.FindGameObjectWithTag("Destruible_block").GetComponent<Tilemap>();
@@ -105,6 +109,22 @@ public class PlayerMovement : MonoBehaviour
         {
             inPause = !inPause;
             OnPause(inPause);
+        }
+
+        if(isInmune)
+        {
+            if(elapsedInmTime < MAX_INM_TIME)
+            {
+                alphaInmune = Mathf.PingPong(Time.time * 12, 1);
+                spriteRenderer.color = new Vector4(1, 1, 1, alphaInmune);
+                elapsedInmTime += Time.deltaTime;
+            }
+            else if(elapsedInmTime >= MAX_INM_TIME)
+            {
+                spriteRenderer.color = new Vector4(1, 1, 1, 1);
+                isInmune = false;
+                elapsedInmTime = 0;
+            }
         }
     }
 
@@ -183,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
         if (!hammerCollider.enabled && animator.GetBool("isAttacking") == false)
         {
             hammerCollider.enabled = true;
+            animator.SetBool("isJumping", false);
             animator.SetBool("isAttacking", true);
         }
     }
@@ -218,6 +239,7 @@ public class PlayerMovement : MonoBehaviour
     {
         hammerCollider.enabled = false;
         animator.SetBool("isAttacking", false);
+        animator.SetBool("isJumping", false);
         animator.SetBool("isWalking", false);
         playerState = PLAYER_STATES.IDLE;
         Idle();
@@ -265,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
             }
             
         }
-        else if (collision.CompareTag("enemy") && playerState != PLAYER_STATES.JUMPING && playerState != PLAYER_STATES.ATTACKING)
+        else if (collision.CompareTag("enemy") && playerState != PLAYER_STATES.JUMPING && playerState != PLAYER_STATES.ATTACKING && !isInmune)
         {
             LoseLife();
         }
@@ -301,6 +323,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void LoseLife()
     {
+        isInmune = true;
         AudioManager.instance.PlaySFX(loseLifeClip);
         lifes--;
         for (int i = 0; i < lifesImages.Length; i++)

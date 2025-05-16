@@ -7,7 +7,7 @@ public class CameraUpScript : MonoBehaviour
     private Camera playerCamera;
     [HideInInspector] public BoxCollider2D boxCollider;
     private const int UP = 3;
-    private const float speed = 1.2f;
+    private const float SPEED = 1.1f;
     private bool animationStarted = false;
     private float time = 0;
     private Vector3 newPos;
@@ -26,7 +26,7 @@ public class CameraUpScript : MonoBehaviour
         {
             if(time < 1)
             {
-                time += Time.deltaTime * speed;
+                time += Time.deltaTime * SPEED;
             }
             else if(time >= 1)
             {

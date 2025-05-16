@@ -55,7 +55,7 @@ public class PointsGainedScript : MonoBehaviour
         if (canvasShowPoints.alpha == 0)
         {
             Debug.Log("Showing canvas Points");
-            actualMountainText.text = GameManager.instance.mountainsCleared >= 99 ? 99.ToString("MOUNTAIN 00") : GameManager.instance.mountainsCleared.ToString("MOUNTAIN 00");
+            actualMountainText.text = GameManager.instance.mountainsCleared >= 99 ? 99.ToString("MOUNTAIN 00") : GameManager.instance.mountainsCleared+1.ToString("MOUNTAIN 00");
             canvasShowPoints.alpha = 1;
             foreach (TMP_Text i in winLose_texts)
             {

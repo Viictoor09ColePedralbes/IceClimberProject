@@ -18,6 +18,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private RectTransform[] totalTransIcon;
     private InputAction inputPlayersSelection, inputIniMount, inputStartGame;
 
+    [SerializeField] private CanvasGroup controlsPanel;
+    private bool showingControls;
+
     void Awake()
     {
         inputMenuMap.Enable();
@@ -37,51 +40,54 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (inputStartGame.triggered)
+        if (!showingControls)
         {
-            if(gameModeSelection == 1)
+            if (inputStartGame.triggered)
             {
-                GameManager.instance.oneLifeGamemode = true;
+                if (gameModeSelection == 1)
+                {
+                    GameManager.instance.oneLifeGamemode = true;
+                }
+                StartGame();
             }
-            StartGame();
-        }
 
-        if(inputIniMount.ReadValue<float>() >= 1 && inputIniMount.triggered)
-        {
-            selectedMountain++;
-            if(selectedMountain > 32)
+            if (inputIniMount.ReadValue<float>() >= 1 && inputIniMount.triggered)
             {
-                selectedMountain = 1;
+                selectedMountain++;
+                if (selectedMountain > 32)
+                {
+                    selectedMountain = 1;
+                }
+                textMountainSelected.text = selectedMountain.ToString("00");
             }
-            textMountainSelected.text = selectedMountain.ToString("00");
-        }
-        else if(inputIniMount.ReadValue<float>() <= -1 && inputIniMount.triggered)
-        {
-            selectedMountain--;
-            if (selectedMountain < 1)
+            else if (inputIniMount.ReadValue<float>() <= -1 && inputIniMount.triggered)
             {
-                selectedMountain = 32;
+                selectedMountain--;
+                if (selectedMountain < 1)
+                {
+                    selectedMountain = 32;
+                }
+                textMountainSelected.text = selectedMountain.ToString("00");
             }
-            textMountainSelected.text = selectedMountain.ToString("00");
-        }
 
-        if (inputPlayersSelection.ReadValue<float>() >= 1 && inputPlayersSelection.triggered)
-        {
-            gameModeSelection++;
-            if (gameModeSelection > (totalTransIcon.Length - 1))
+            if (inputPlayersSelection.ReadValue<float>() >= 1 && inputPlayersSelection.triggered)
             {
-                gameModeSelection = 0;
+                gameModeSelection++;
+                if (gameModeSelection > (totalTransIcon.Length - 1))
+                {
+                    gameModeSelection = 0;
+                }
+                selectPlayerIcon.position = totalTransIcon[gameModeSelection].position;
             }
-            selectPlayerIcon.position = totalTransIcon[gameModeSelection].position;
-        }
-        else if(inputPlayersSelection.ReadValue<float>() <= -1 && inputPlayersSelection.triggered)
-        {
-            gameModeSelection--;
-            if (gameModeSelection < 0)
+            else if (inputPlayersSelection.ReadValue<float>() <= -1 && inputPlayersSelection.triggered)
             {
-                gameModeSelection = (totalTransIcon.Length - 1);
+                gameModeSelection--;
+                if (gameModeSelection < 0)
+                {
+                    gameModeSelection = (totalTransIcon.Length - 1);
+                }
+                selectPlayerIcon.position = totalTransIcon[gameModeSelection].position;
             }
-            selectPlayerIcon.position = totalTransIcon[gameModeSelection].position;
         }
     }
 
@@ -130,5 +136,13 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Saliste del juego");
         Application.Quit();
+    }
+
+    public void ControlsMenu(bool showControls)
+    {
+        showingControls = showControls;
+        controlsPanel.interactable = showControls;
+        controlsPanel.blocksRaycasts = showControls;
+        controlsPanel.alpha = showControls ? 1 : 0;
     }
 }
