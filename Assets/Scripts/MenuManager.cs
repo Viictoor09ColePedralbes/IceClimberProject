@@ -112,6 +112,7 @@ public class MenuManager : MonoBehaviour
 
             PlayerValuesSerializable datosRestaurados = JsonUtility.FromJson<PlayerValuesSerializable>(json);
 
+            PlayerValues.id_player = datosRestaurados.id_player;
             PlayerValues.topHighScore = datosRestaurados.topHighScore;
             PlayerValues.highScore1 = datosRestaurados.highScore1;
             PlayerValues.highScore2 = datosRestaurados.highScore2;
@@ -128,7 +129,7 @@ public class MenuManager : MonoBehaviour
             Debug.Log(playerID);
             PlayerValues.id_player = playerID;
             SaveJSON.SaveData();
-            Debug.Log("No se encontró el archivo de datos.");
+            Debug.Log("No se encontró el archivo de datos. Creado uno en su lugar");
         }
     }
 

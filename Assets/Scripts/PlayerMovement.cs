@@ -34,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private GameObject fallPointPrefab;
     private GameObject fallPoint;
-    private float timeFallPoint, maxTimeFallPoint = 2f, elapsedInmTime = 0, alphaInmune = 1;
-    private const float MAX_INM_TIME = 2;
+    private float timeFallPoint, maxTimeFallPoint = 2f, elapsedInmTime = 0, alphaInmune = 1, attackingTime = 0;
+    private const float MAX_INM_TIME = 2, MAX_ATTACKING_TIME = 3;
     [SerializeField] private Image[] lifesImages;
     [SerializeField] private Image gameOverImage;
     [SerializeField] private AudioClip jumpClip, destroyBlockClip, aerodactyl_clip, loseLifeClip, gameOverClip;
@@ -64,8 +64,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
-        Debug.Log("Estado actual: " + playerState.ToString());
         if (!destroyedTile)
         {
             destruibleTiles = GameObject.FindGameObjectWithTag("Destruible_block").GetComponent<Tilemap>();
@@ -147,8 +145,7 @@ public class PlayerMovement : MonoBehaviour
             playerState = PLAYER_STATES.JUMPING;
             Jumping();
         }
-
-        if(attack_ia.triggered && animator.GetBool("hasHammer"))
+        else if(attack_ia.triggered && animator.GetBool("hasHammer"))
         {
             playerState = PLAYER_STATES.ATTACKING;
             Attacking();
@@ -176,8 +173,7 @@ public class PlayerMovement : MonoBehaviour
             playerState = PLAYER_STATES.JUMPING;
             Jumping();
         }
-
-        if (attack_ia.triggered && animator.GetBool("hasHammer"))
+        else if(attack_ia.triggered && animator.GetBool("hasHammer"))
         {
             rb.velocity = Vector2.zero;
             playerState = PLAYER_STATES.ATTACKING;
@@ -205,6 +201,16 @@ public class PlayerMovement : MonoBehaviour
             hammerCollider.enabled = true;
             animator.SetBool("isJumping", false);
             animator.SetBool("isAttacking", true);
+        }
+
+        if(attackingTime < MAX_ATTACKING_TIME)
+        {
+            attackingTime += Time.deltaTime;
+        }
+        else if(attackingTime >= MAX_ATTACKING_TIME)
+        {
+            attackingTime = 0;
+            FinishedAttack();
         }
     }
 
@@ -281,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                LoseLife();
+                LoseLife(true);
                 gameObject.transform.position = fallPoint.transform.position;
                 rb.velocity = Vector2.zero;
             }
@@ -289,7 +295,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.CompareTag("enemy") && playerState != PLAYER_STATES.JUMPING && playerState != PLAYER_STATES.ATTACKING && !isInmune)
         {
-            LoseLife();
+            LoseLife(true);
         }
     }
 
@@ -321,10 +327,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void LoseLife()
+    private void LoseLife(bool doInmuneAndSound)
     {
-        isInmune = true;
-        AudioManager.instance.PlaySFX(loseLifeClip);
+        if (doInmuneAndSound)
+        {
+            isInmune = true;
+            AudioManager.instance.PlaySFX(loseLifeClip);
+        }
         lifes--;
         for (int i = 0; i < lifesImages.Length; i++)
         {
@@ -368,8 +377,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OneLifeGamemode()
     {
-        LoseLife();
-        LoseLife();
+        LoseLife(false);
+        LoseLife(false);
     }
 
     public void OnPause(bool inPauseT)

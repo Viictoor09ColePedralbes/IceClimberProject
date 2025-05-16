@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 918019140289215203}
   - component: {fileID: 5414360883213331778}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6325805751275283803}
   - component: {fileID: 6818951489225732249}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8784183601551368481}
   - component: {fileID: 4862278106223482664}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 8647691915362280997}
   - component: {fileID: 8406688110038520883}
   - component: {fileID: 5051835742204867007}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Cloud_1
   m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4178808032250130770}
   - component: {fileID: 4544541102599390022}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67296439542450499}
   - component: {fileID: 5632718926572621682}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017098617579650651}
   - component: {fileID: 6647877199673587206}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1065367365759246948}
   - component: {fileID: 431505362855216023}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 5802355678844838947}
   - component: {fileID: 5676072661640751784}
   - component: {fileID: 6655358692330882988}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Cloud_1 (3)
   m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
@@ -1298,7 +1298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1729302237566968416}
   - component: {fileID: 4632328326370108512}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1659,7 +1659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6684432659254667898}
   - component: {fileID: 3711941208423253027}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1743,7 +1743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3134335938116817079}
   - component: {fileID: 3102900758885221286}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1830,7 +1830,7 @@ GameObject:
   - component: {fileID: 7562304506820263300}
   - component: {fileID: 6170113273360425727}
   - component: {fileID: 2811072962251850190}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Cloud_1 (4)
   m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
@@ -1974,7 +1974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2165086573187993466}
   - component: {fileID: 6383610623675544377}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2058,7 +2058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3034613535241069531}
   - component: {fileID: 5335829884323285407}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2145,7 +2145,7 @@ GameObject:
   - component: {fileID: 4506265996163989010}
   - component: {fileID: 9045911493331576234}
   - component: {fileID: 1770671166710459173}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Cloud_1 (1)
   m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
@@ -2289,7 +2289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3122062928592165178}
   - component: {fileID: 509553811819626909}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2373,7 +2373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2731209215823033319}
   - component: {fileID: 1811605733255907706}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2457,7 +2457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6823104275263996372}
   - component: {fileID: 6063868917998433195}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2649,7 +2649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3640565817552688214}
   - component: {fileID: 1720095006432170528}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2733,7 +2733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6368939700240919845}
   - component: {fileID: 2103725418682660730}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2817,7 +2817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5573244320448157582}
   - component: {fileID: 2910356528885694202}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2901,7 +2901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6846785408120878542}
   - component: {fileID: 804463529288590634}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Center3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2985,7 +2985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 280339683637932727}
   - component: {fileID: 571915928554007054}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3072,7 +3072,7 @@ GameObject:
   - component: {fileID: 4201178315268298107}
   - component: {fileID: 7558145689622068291}
   - component: {fileID: 7539729701891362709}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Cloud_1 (2)
   m_TagString: Not_destruible_block
   m_Icon: {fileID: 0}
